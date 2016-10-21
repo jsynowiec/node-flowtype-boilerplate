@@ -22,7 +22,7 @@ Provides a basic template, batteries included:
 + [ESLint][eslint] with the [airbnb-base][airbnb-base], [flowtype][eslint-flowtype] and [async/await][eslint-async-await] rules, 
 + [Jest][jest] unit testing and coverage,
 + [Type definitions][flow-typed] for Jest,
-+ [NPM scripts for common operations](#available-npm-scripts),
++ [NPM scripts for common operations](#available-scripts),
 + [.editorconfig][editorconfig] for consistent file format,
 + [Yarn][yarn] lockfile so only verified and up-to-date dependencies are installed.
 

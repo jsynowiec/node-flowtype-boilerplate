@@ -1,6 +1,9 @@
 {
   "extends": "airbnb-base",
   "parser": "babel-eslint",
+  "env": {
+    "jest": true
+  },
   "plugins": [
     "flowtype",
     "no-async-without-await"

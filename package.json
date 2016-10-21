@@ -22,7 +22,18 @@
     "eslint-plugin-import": "~2.0.1",
     "eslint-plugin-no-async-without-await": "~1.2.0",
     "flow-bin": "~0.33.0",
-    "jest": "~16.0.2"
+    "jest": "~16.0.2",
+    "rimraf": "~2.5.4"
+  },
+  "scripts": {
+    "clean": "rimraf coverage dist tmp",
+    "lint": "eslint . && npm run typecheck",
+    "typecheck": "flow check",
+    "test": "npm run lint && npm run test-only",
+    "test-only": "jest --coverage",
+    "test:watch": "jest --watch",
+    "build": "babel src/**/*.js -d dist",
+    "build:watch": "babel --watch src/**/*.js -d dist"
   },
   "author": "Jakub Synowiec <jakub@jakubsynowiec.info> (https://jakubsynowiec.info)",
   "license": "MIT",

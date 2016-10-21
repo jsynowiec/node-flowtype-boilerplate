@@ -2,6 +2,7 @@
   "presets": ["node6", "stage-3"],
   "plugins": [
     ["transform-inline-imports-commonjs"],
+    ["transform-flow-strip-types"],
     ["transform-runtime", {
       "polyfill": false,
       "regenerator": true

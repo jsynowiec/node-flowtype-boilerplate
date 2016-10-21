@@ -49,6 +49,10 @@ Run using either `npm run <script>` or `yarn run <script>` comand.
 + `build` - compile source files,
 + `build:watch` - interactive watch mode, compile sources on change.
 
+## Alternative
+
+As an alternative to Flow type checking, you can try my [Node.js TypeScript boilerplate][ts-boilerplate]. It's basically the same but with TypeScript and TSLint.
+
 ## License
 MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE) file.
 
@@ -81,3 +85,5 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [yarn]: https://github.com/yarnpkg/yarn
 [flow-typed]: https://github.com/flowtype/flow-typed
 [editorconfig]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/.editorconfig
+
+[ts-boilerplate]: https://github.com/jsynowiec/node-typescript-boilerplate

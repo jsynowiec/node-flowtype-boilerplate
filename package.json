@@ -1,0 +1,19 @@
+{
+  "name": "node-flowtype-boilerplate",
+  "version": "0.0.0",
+  "description": "Minimalistic boilerplate to quick-start Node.js development in ES6+ (stage-3) with Flow type checking.",
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 6.2"
+  },
+  "author": "Jakub Synowiec <jakub@jakubsynowiec.info> (https://jakubsynowiec.info)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jsynowiec/node-flowtype-boilerplate#readme"
+}

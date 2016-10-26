@@ -1,7 +1,6 @@
 {
   "presets": ["node6", "stage-3"],
   "plugins": [
-    ["transform-inline-imports-commonjs"],
     ["transform-flow-strip-types"],
     ["transform-runtime", {
       "polyfill": false,
@@ -12,11 +11,6 @@
     "production": {
       "comments": false,
       "minified": true
-    },
-    "test": {
-      "plugins": [
-        ["transform-inline-imports-commonjs"]
-      ]
     }
   }
 }

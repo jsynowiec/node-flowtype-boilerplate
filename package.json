@@ -49,7 +49,6 @@
     "moduleFileExtensions": [
       "js"
     ],
-    "testRegex": "<rootDir>(__tests__/).*\\.(test|spec)\\.js$",
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.js"

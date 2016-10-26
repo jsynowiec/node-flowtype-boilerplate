@@ -1,6 +1,7 @@
 [![Dev dependencies][dependencies-badge]][dependencies]
 [![Node.js version][nodejs-badge]][nodejs]
 [![NPM version][npm-badge]][npm]
+[![Build Status][travis-badge]][travis-ci]
 
 [![MIT License][license-badge]][LICENSE]
 [![PRs Welcome][prs-badge]][prs]
@@ -62,6 +63,8 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [nodejs]: https://nodejs.org/dist/latest-v6.x/docs/api/
 [npm-badge]: https://img.shields.io/badge/npm->=%203.8.9-blue.svg?style=flat-square
 [npm]: https://docs.npmjs.com/
+[travis-badge]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate.svg?branch=master
+[travis-ci]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square

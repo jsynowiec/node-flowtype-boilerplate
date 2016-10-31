@@ -21,7 +21,7 @@
     "eslint-plugin-flowtype": "~2.25.0",
     "eslint-plugin-import": "~2.0.1",
     "eslint-plugin-no-async-without-await": "~1.2.0",
-    "flow-bin": "~0.33.0",
+    "flow-bin": "~0.34.0",
     "jest": "~16.0.2"
   },
   "scripts": {

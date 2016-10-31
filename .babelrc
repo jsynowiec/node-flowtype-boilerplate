@@ -1,7 +1,8 @@
 {
-  "presets": ["node6", "stage-3"],
+  "presets": ["node6"],
   "plugins": [
     ["transform-flow-strip-types"],
+    ["transform-async-to-generator"],
     ["transform-runtime", {
       "polyfill": false,
       "regenerator": true

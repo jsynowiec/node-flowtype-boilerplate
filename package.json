@@ -26,9 +26,11 @@
   },
   "scripts": {
     "clean": "rimraf coverage dist tmp",
-    "lint": "eslint . && npm run typecheck",
+    "lint": "eslint .",
+    "postlint": "npm run typecheck",
     "typecheck": "flow check",
-    "test": "npm run lint && npm run test-only",
+    "pretest": "npm run lint",
+    "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
     "build": "babel src/**/*.js -d dist",

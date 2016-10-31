@@ -22,11 +22,10 @@
     "eslint-plugin-import": "~2.0.1",
     "eslint-plugin-no-async-without-await": "~1.2.0",
     "flow-bin": "~0.33.0",
-    "jest": "~16.0.2",
-    "rimraf": "~2.5.4"
+    "jest": "~16.0.2"
   },
   "scripts": {
-    "clean": "rimraf coverage dist tmp",
+    "clean": "rm -rf coverage dist tmp",
     "lint": "eslint .",
     "postlint": "npm run typecheck",
     "typecheck": "flow check",

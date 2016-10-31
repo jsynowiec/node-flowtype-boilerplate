@@ -13,13 +13,14 @@
 
 # node-flowtype-boilerplate
 
-Minimalistic boilerplate to jump-start a [Node.js][nodejs] project in ES6+ ([stage-3][stage-3]) with [Flow][flowtype] type checking.
+Minimalistic boilerplate to jump-start a [Node.js][nodejs] project in ES6 with [Flow][flowtype] type checking.
 
 Provides a basic template, batteries included:
 
-+ [ES6 + stage-3][stage-3] to ES6 compilation,
-  + Removes Flow types,
++ ES6 + babel,
+  + Removes Flow type annotations,
   + Transforms imports to lazy CommonJS requires,
+  + Transforms async/await to generators,
 + [ESLint][eslint] with the [airbnb-base][airbnb-base], [flowtype][eslint-flowtype] and [async/await][eslint-async-await] rules, 
 + [Jest][jest] unit testing and coverage,
 + [Type definitions][flow-typed] for Jest,
@@ -79,7 +80,6 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [twitter-badge]: https://img.shields.io/twitter/url/https/jsynowiec/node-flowtype-boilerplate.svg?style=social
 [jest]: https://facebook.github.io/jest/
 
-[stage-3]: https://babeljs.io/docs/plugins/preset-stage-3/
 [flowtype]: https://flowtype.org/
 [eslint]: http://eslint.org/
 [airbnb-base]: https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base

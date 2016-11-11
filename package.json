@@ -10,7 +10,7 @@
     "babel-cli": "~6.18.0",
     "babel-core": "~6.18.0",
     "babel-eslint": "~7.1.0",
-    "babel-jest": "~16.0.0",
+    "babel-jest": "~17.0.0",
     "babel-plugin-transform-async-to-generator": "~6.16.0",
     "babel-plugin-transform-flow-strip-types": "~6.18.0",
     "babel-plugin-transform-runtime": "~6.15.0",
@@ -22,7 +22,7 @@
     "eslint-plugin-import": "~2.0.1",
     "eslint-plugin-no-async-without-await": "~1.2.0",
     "flow-bin": "~0.34.0",
-    "jest": "~16.0.2"
+    "jest": "~17.0.0"
   },
   "scripts": {
     "clean": "rm -rf coverage dist tmp",

@@ -21,7 +21,7 @@ Provides a basic template, batteries included:
   + Removes Flow type annotations,
   + Transforms imports to lazy CommonJS requires,
   + Transforms async/await to generators,
-+ [ESLint][eslint] with the [airbnb-base][airbnb-base], [flowtype][eslint-flowtype] and [async/await][eslint-async-await] rules, 
++ [ESLint][eslint] with the [airbnb-base][airbnb-base] and [flowtype][eslint-flowtype] rules,
 + [Jest][jest] unit testing and coverage,
 + [Type definitions][flow-typed] for Jest,
 + [NPM scripts for common operations](#available-scripts),
@@ -84,7 +84,6 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [eslint]: http://eslint.org/
 [airbnb-base]: https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
 [eslint-flowtype]: https://www.npmjs.com/package/eslint-plugin-flowtype
-[eslint-async-await]: https://github.com/zertosh/eslint-plugin-no-async-without-await
 [yarn]: https://github.com/yarnpkg/yarn
 [flow-typed]: https://github.com/flowtype/flow-typed
 [editorconfig]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/.editorconfig

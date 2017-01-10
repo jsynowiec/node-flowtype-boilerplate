@@ -6,8 +6,7 @@
     "jasmine": true
   },
   "plugins": [
-    "flowtype",
-    "no-async-without-await"
+    "flowtype"
   ],
   "rules": {
     "max-len": [
@@ -33,7 +32,6 @@
       {
         "excludeArrowFunctions": true
       }
-    ],
-    "no-async-without-await/no-async-without-await": 2
+    ]
   }
 }

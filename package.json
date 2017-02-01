@@ -4,7 +4,7 @@
   "description": "Minimalistic boilerplate to quick-start Node.js development in ES6+ (stage-3) with Flow type checking.",
   "engineStrict": true,
   "engines": {
-    "node": ">= 6.2"
+    "node": ">=6.9"
   },
   "devDependencies": {
     "babel-cli": "~6.22.2",

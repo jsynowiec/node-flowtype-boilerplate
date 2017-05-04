@@ -2,20 +2,27 @@
 
 import greeter from '../src/main';
 
-jest.useFakeTimers();
+describe('greeter function', () => {
+  // Read more: https://facebook.github.io/jest/docs/api.html#jestusefaketimers
+  jest.useFakeTimers();
 
-it('delays the greeting by 2 seconds', async () => {
-  expect.assertions(2);
-  const promise = greeter('John');
-  jest.runOnlyPendingTimers();
-  await promise;
-  expect(setTimeout.mock.calls.length).toBe(1);
-  expect(setTimeout.mock.calls[0][1]).toBe(2000);
-});
+  let hello;
 
-it('greets a user with `Hello, {name}` message', async () => {
-  const promise = greeter('John');
-  jest.runOnlyPendingTimers();
-  const hello = await promise;
-  expect(hello).toBe('Hello, John');
+  // Act before assertions
+  beforeAll(async () => {
+    const p = greeter('John');
+    jest.runOnlyPendingTimers();
+    hello = await p;
+  });
+
+  // Assert if setTimeout was called properly
+  it('delays the greeting by 2 seconds', () => {
+    expect(setTimeout.mock.calls.length).toBe(1);
+    expect(setTimeout.mock.calls[0][1]).toBe(2000);
+  });
+
+  // Assert greeter result
+  it('greets a user with `Hello, {name}` message', () => {
+    expect(hello).toBe('Hello, John');
+  });
 });

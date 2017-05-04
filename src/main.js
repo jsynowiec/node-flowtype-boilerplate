@@ -1,7 +1,7 @@
 /** @flow */
 
 function delayedHello(name: string, delay: number = 2000): Promise<string> {
-  return new Promise((resolve) => setTimeout(resolve(`Hello, ${name}`), delay));
+  return new Promise((resolve) => setTimeout(() => resolve(`Hello, ${name}`), delay));
 }
 
 // Below is an example of using both, the eslint and flow errors suppression

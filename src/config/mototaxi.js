@@ -1,5 +1,6 @@
+const domain = require('../domain');
 
 module.exports = {
-    logger: { log: (message) => { Console.log(`mototaxi: ${message}`) } },
-    commandHandlers: [],
+    logger: { log: (message) => { console.log(`mototaxi: ${message}`) } },
+    commandHandlers: domain.commandHandlers,
 };

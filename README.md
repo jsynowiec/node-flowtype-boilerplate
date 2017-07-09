@@ -6,17 +6,16 @@
 
 [![MIT License][license-badge]][LICENSE]
 [![PRs Welcome][prs-badge]][prs]
-[![Donate][donate-badge]][donate]
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
-# node-flowtype-boilerplate
+# glee
 
-Minimalistic boilerplate to jump-start a [Node.js][nodejs] project in ES6 with [Flow][flowtype] type checking.
+Hapi boilerplate with glue, jest, ES6+ (stage-3), build scripts and everything you need to quick-start backend development with Flow type checking.
 
-Provides a basic template, batteries included:
+Provides a basic Rest API template:
 
 + ES6 + babel,
   + Removes Flow type annotations,
@@ -28,13 +27,14 @@ Provides a basic template, batteries included:
 + [NPM scripts for common operations](#available-scripts),
 + [.editorconfig][editorconfig] for consistent file format,
 + [Yarn][yarn] lockfile so only verified and up-to-date dependencies are installed.
++ Guidance for CQRS architecture.
 
 ## Quick start
 
 This project requires [Node.js][nodejs] 6.9 (LTS) or later (but should work with any 6.2 or newer release) and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
 
 ```
-git clone https://github.com/jsynowiec/node-flowtype-boilerplate
+git clone https://github.com/acklenavenue/glee
 cd node-flowtype-boilerplate
 yarn
 ```
@@ -66,35 +66,31 @@ If you have any questions regarding this project:
 * search for [issues marked as *question*][issues-question],
 * if none of the above is appropriate, [open an issue][new-issue].
 
-## Alternative
+## Inspiration
 
-As an alternative to Flow type checking, you can try my [Node.js TypeScript boilerplate][ts-boilerplate]. It's basically the same but with TypeScript and TSLint.
+This boilerplate was initially inspired by [Jakub Synowiec](https://github.com/acklenavenue/glee), but taken several steps further to include a basic Hapi-based REST API with CQRS-style command dispatching.
 
 ## License
-MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE) file.
+MIT License. See the [LICENSE](https://github.com/acklenavenue/glee/blob/master/LICENSE) file.
 
-[dependencies-badge]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate/dev-status.svg?style=flat-square
-[dependencies]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate?type=dev
+[dependencies-badge]: https://david-dm.org/acklenavenue/glee/dev-status.svg?style=flat-square
+[dependencies]: https://david-dm.org/acklenavenue/glee?type=dev
 [nodejs-badge]: https://img.shields.io/badge/node->=%206.9.0-blue.svg?style=flat-square
 [nodejs]: https://nodejs.org/dist/latest-v6.x/docs/api/
 [npm-badge]: https://img.shields.io/badge/npm->=%203.10.8-blue.svg?style=flat-square
 [npm]: https://docs.npmjs.com/
 [yarn-badge]: https://img.shields.io/badge/yarn->=%200.19.0-blue.svg?style=flat-square
 [yarn]: https://yarnpkg.com
-[travis-badge]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate.svg?branch=master
-[travis-ci]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate
+[travis-badge]: https://travis-ci.org/acklenavenue/glee.svg?branch=master
+[travis-ci]: https://travis-ci.org/acklenavenue/glee
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
-[license]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE
+[license]: https://github.com/acklenavenue/glee/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
-[donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
-[donate]: http://bit.ly/donate-js
-[github-watch-badge]: https://img.shields.io/github/watchers/jsynowiec/node-flowtype-boilerplate.svg?style=social
-[github-watch]: https://github.com/jsynowiec/node-flowtype-boilerplate/watchers
-[github-star-badge]: https://img.shields.io/github/stars/jsynowiec/node-flowtype-boilerplate.svg?style=social
-[github-star]: https://github.com/jsynowiec/node-flowtype-boilerplate/stargazers
-[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20this%20Node.js%20ES6+%20@flowtype%20boilerplate%20https://github.com/jsynowiec/node-flowtype-boilerplate%20%F0%9F%91%8D
-[twitter-badge]: https://img.shields.io/twitter/url/https/jsynowiec/node-flowtype-boilerplate.svg?style=social
+[github-watch-badge]: https://img.shields.io/github/watchers/acklenavenue/glee.svg?style=social
+[github-watch]: https://github.com/acklenavenue/glee/watchers
+[github-star-badge]: https://img.shields.io/github/stars/acklenavenue/glee.svg?style=social
+[github-star]: https://github.com/acklenavenue/glee/stargazers
 [jest]: https://facebook.github.io/jest/
 
 [flowtype]: https://flowtype.org/
@@ -103,11 +99,7 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [eslint-flowtype]: https://www.npmjs.com/package/eslint-plugin-flowtype
 [yarn]: https://github.com/yarnpkg/yarn
 [flow-typed]: https://github.com/flowtype/flow-typed
-[editorconfig]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/.editorconfig
+[editorconfig]: https://github.com/acklenavenue/glee/blob/master/.editorconfig
 
-[ts-boilerplate]: https://github.com/jsynowiec/node-typescript-boilerplate
-
-[wiki-faq]: https://github.com/jsynowiec/node-flowtype-boilerplate/wiki/FAQ
-
-[new-issue]: https://github.com/jsynowiec/node-flowtype-boilerplate/issues/new
-[issues-question]: https://github.com/jsynowiec/node-flowtype-boilerplate/issues?utf8=✓&q=label%3Aquestion%20
+[new-issue]: https://github.com/acklenavenue/glee/issues/new
+[issues-question]: https://github.com/acklenavenue/glee/issues?utf8=✓&q=label%3Aquestion%20

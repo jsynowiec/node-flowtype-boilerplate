@@ -1,7 +1,7 @@
 {
-  "name": "node-flowtype-boilerplate",
+  "name": "glee",
   "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in ES6+ (stage-3) with Flow type checking.",
+  "description": "Hapi boilerplate with glue, jest, ES6+ (stage-3), build scripts and everything you need to quick-start backend development with Flow type checking.",
   "engineStrict": true,
   "engines": {
     "node": ">=6.9"
@@ -35,16 +35,16 @@
     "build": "babel src/**/*.js -d dist",
     "build:watch": "babel --watch src/**/*.js -d dist"
   },
-  "author": "Jakub Synowiec <jakub@jakubsynowiec.info> (https://jakubsynowiec.info)",
+  "author": "Byron Sommardahl <byron@acklenavenue.com> (http://acklenavenue.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate.git"
+    "url": "https://github.com/acklenavenue/glee.git"
   },
   "bugs": {
-    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate/issues"
+    "url": "https://github.com/acklenavenue/glee/issues"
   },
-  "homepage": "https://github.com/jsynowiec/node-flowtype-boilerplate#readme",
+  "homepage": "https://github.com/acklenavenue/glee#readme",
   "jest": {
     "testEnvironment": "node",
     "moduleFileExtensions": [

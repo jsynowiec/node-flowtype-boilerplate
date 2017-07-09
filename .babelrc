@@ -13,5 +13,6 @@
       "comments": false,
       "minified": true
     }
-  }
+  },
+  "retainLines": true
 }

@@ -4,8 +4,11 @@ export function register (server, options, next) {
     server.route({
       method: 'GET',
       path: '/health',
-      handler: (request, reply) => {
-        return reply(pkg);
+      config: {
+        tags: ['api'],
+        handler: (request, reply) => {
+          return reply(pkg);
+        }
       }
    });
    next();

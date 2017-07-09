@@ -1,7 +1,7 @@
 'use strict';
 
 const Glue = require('glue');
-const manifest = require('./manifest.json');
+const manifest = require('./config');
 
 const options = {
     relativeTo: __dirname
@@ -12,6 +12,6 @@ Glue.compose(manifest, options, (err, server) => {
         throw err;
     }
     server.start(() => {
-        console.log('✅  Serve started.');
+        console.log(`✅  Server started.`);
     });
 });

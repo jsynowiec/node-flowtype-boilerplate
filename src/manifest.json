@@ -1,0 +1,21 @@
+{
+   "connections": [
+      {
+         "port": 8000,
+         "labels": [
+            "api"
+         ]
+      }
+   ],
+   "registrations": [
+        {
+            "plugin": "blipp"
+        },
+        {
+            "plugin": "./status"
+        },
+        {
+            "plugin": "./widgets"
+        }
+   ]
+}

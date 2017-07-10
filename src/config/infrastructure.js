@@ -13,6 +13,11 @@ module.exports = [
     },
     {
         plugin: {
+            register: "./config/auth"         
+        }
+    },
+    {
+        plugin: {
             register: "hapi-swagger",
             options: {
                 info: {

@@ -5,6 +5,7 @@ export function register (server, options, next) {
       method: 'GET',
       path: '/health',
       config: {
+        auth: false,
         tags: ['api'],
         handler: (request, reply) => {
           return reply(pkg);

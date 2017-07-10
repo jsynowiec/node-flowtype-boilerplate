@@ -66,6 +66,7 @@
     "good-console": "^6.4.0",
     "good-file": "^6.0.1",
     "good-squeeze": "^5.0.2",
+    "hapi-auth-jwt2": "^7.3.0",
     "hapi-swagger": "^7.7.0",
     "inert": "^4.2.0",
     "joi": "^10.6.0",

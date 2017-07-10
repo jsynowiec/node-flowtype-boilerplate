@@ -1,3 +1,3 @@
 module.exports = [
-    require('./widgets')
+    require('./encounters')
 ];

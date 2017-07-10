@@ -1,3 +1,3 @@
 module.exports = {
-    commandHandlers: require('./command-handlers')
-}
+  commandHandlers: require('./command-handlers'),
+};

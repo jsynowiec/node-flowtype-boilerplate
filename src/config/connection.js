@@ -1,6 +1,4 @@
 module.exports = {
-    "port": 8000,
-    "labels": [
-    "api"
-    ]
+  port: 8000,
+  labels: ['api'],
 };

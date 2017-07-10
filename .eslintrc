@@ -9,6 +9,7 @@
     "flowtype"
   ],
   "rules": {
+    "import/no-extraneous-dependencies": ["error", {"packageDir": "./"}],  
     "max-len": [
       2,
       120

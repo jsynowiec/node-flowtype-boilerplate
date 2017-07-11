@@ -10,7 +10,6 @@ const Pack = require('./package.json');
 const options = {
   relativeTo: __dirname,
 };
-
 Glue.compose(manifest, options, (err, server) => {
   if (err) {
     throw err;

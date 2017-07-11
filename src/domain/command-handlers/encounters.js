@@ -1,7 +1,8 @@
+/* eslint-disable no-param-reassign */
 let encounters = [];
 
 module.exports = {
-  getAllEncounters: (cmd) => encounters,
+  getAllEncounters: () => encounters,
   getOneEncounter: (cmd) => encounters.filter((w) => w.id === cmd.id),
   removeEncounter: (cmd) => {
     encounters = encounters.filter((w) => w.id !== cmd.id);

@@ -1,3 +1,5 @@
+const commandHandlers = require('./command-handlers');
+
 module.exports = {
-  commandHandlers: require('./command-handlers'),
+  commandHandlers,
 };

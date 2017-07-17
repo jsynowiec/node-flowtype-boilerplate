@@ -16,7 +16,7 @@ export function register(server, options, next) {
       auth: 'jwt',
       tags: ['api'],
       handler: (request, reply) => {
-        reply(dispatch({ type: 'getAllEncounters', userId: request.authorization.id }));
+        reply(dispatch({ type: 'getAllEncounters', userId: request.auth.credentials.id }));
       },
     },
   }, {

@@ -6,9 +6,7 @@ const dirs = (p) => fs.readdirSync(p).filter((f) => fs.statSync(`${p}/${f}`).isD
 const modulePlugins = dirs(`${__dirname}/../routes`).map((d) => ({ plugin: `./routes/${d}` }));
 
 const manifest = {
-  connections: [
-    require('./connection.js'),
-  ],
+  connections: require('./connections.js'),
   registrations: [].concat(infrastructurePlugins, modulePlugins),
 };
 

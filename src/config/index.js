@@ -1,3 +1,4 @@
+const connections = require('./connection.js');
 const fs = require('fs');
 
 const infrastructurePlugins = require('./infrastructure.js');
@@ -7,7 +8,7 @@ const modulePlugins = dirs(`${__dirname}/../routes`).map((d) => ({ plugin: `./ro
 
 const manifest = {
   connections: [
-    require('./connection.js'),
+    connections,
   ],
   registrations: [].concat(infrastructurePlugins, modulePlugins),
 };

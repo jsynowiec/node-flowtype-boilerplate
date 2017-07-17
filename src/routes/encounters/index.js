@@ -1,8 +1,8 @@
-const pkg = {};
+
 const Joi = require('joi');
 
-export function register(server, options, next) {
-  const dispatch = (cmd) => new Promise((resolve, reject) => {
+export default function register(server, options, next) {
+  const dispatch = (cmd) => new Promise((resolve) => {
     server.app.dispatcher.dispatch(cmd)
         .subscribe((response) => {
           resolve(response);

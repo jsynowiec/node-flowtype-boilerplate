@@ -1,13 +1,15 @@
+import type Encounter from '../types/encounter';
+
 export default class Encounters {
-  constructor(db) {
+  constructor(db: Array<Encounter>) {
     this.db = db;
   }
 
-  getAllEncounters({ userId }): Array<any> {
+  getAllEncounters({ userId }): Array<Encounter> {
     return this.db.filter((i) => i.userId === userId);
   }
 
-  getOneEncounter(cmd): any {
+  getOneEncounter(cmd): Encounter {
     return this.db.filter((w) => w.id === cmd.id);
   }
 
@@ -18,8 +20,8 @@ export default class Encounters {
       });
   }
 
-  createEncounter(cmd) {
-    const newEncounter = { id: this.db.length + 1, name: cmd.name, size: cmd.size };
+  createEncounter(cmd): Encounter {
+    const newEncounter = { id: this.db.length + 1, name: cmd.name, bloodType: cmd.bloodType };
     this.db.push(newEncounter);
     return newEncounter;
   }

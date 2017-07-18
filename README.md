@@ -80,8 +80,8 @@ MIT License. See the [LICENSE](https://github.com/acklenavenue/glee/blob/master/
 [npm]: https://docs.npmjs.com/
 [yarn-badge]: https://img.shields.io/badge/yarn->=%200.19.0-blue.svg?style=flat-square
 [yarn]: https://yarnpkg.com
-[travis-badge]: https://travis-ci.org/acklenavenue/glee.svg?branch=master
-[travis-ci]: https://travis-ci.org/acklenavenue/glee
+[travis-badge]: https://travis-ci.org/AcklenAvenue/glee.svg?branch=master
+[travis-ci]: https://travis-ci.org/AcklenAvenue/glee
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license]: https://github.com/acklenavenue/glee/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square

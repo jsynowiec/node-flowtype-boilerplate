@@ -1,32 +1,33 @@
-"use strict";
 
-export class Encounters {
+
+export default class Encounters {
   constructor(db) {
     this.db = db;
   }
 
-  getAllEncounters(cmd) {
+  getAllEncounters(): Array<any> {
     return this.db;
   }
 
-  getOneEncounter(cmd) {
-    return this.db.filter(w => w.id === cmd.id);
+  getOneEncounter(cmd): any {
+    return this.db.filter((w) => w.id === cmd.id);
   }
 
   removeEncounter(cmd) {
-    this.db = this.db.filter(w => w.id !== cmd.id);
+    this.db = this.db.filter((w) => w.id !== cmd.id);
   }
 
   createEncounter(cmd) {
-    this.db.push({ id: encounters.length + 1, name: cmd.name, size: cmd.size });
+    this.db.push({ id: this.db.length + 1, name: cmd.name, size: cmd.size });
   }
 
   modifyEncounter(cmd) {
-    this.db = this.db.map(w => {
-      if (w.id === cmd.id) {
-        w.size = cmd.size;
+    this.db = this.db.map((w) => {
+      const current = w;
+      if (current.id === cmd.id) {
+        current.size = cmd.size;
       }
-      return w;
+      return current;
     });
   }
 }

@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, no-console */
 const mototaxi = require('mototaxi');
 const mototaxiConfig = require('./config/mototaxi.js');
 
@@ -11,7 +11,6 @@ const Pack = require('./package.json');
 const options = {
   relativeTo: __dirname,
 };
-
 
 Glue.compose(manifest, options, (err, server) => {
   if (err) {

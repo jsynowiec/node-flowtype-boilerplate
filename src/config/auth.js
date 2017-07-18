@@ -18,7 +18,7 @@ const validate = (decoded, request, callback) => {
 export default function register(server, options, next) {
   server.register(hapiAuthJwt, (err) => {
     if (err) {
-      console.log(err);
+      throw new Error(err);
     }
 
     server.auth.strategy('jwt', 'jwt',

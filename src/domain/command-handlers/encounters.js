@@ -5,8 +5,8 @@ export default class Encounters {
     this.db = db;
   }
 
-  getAllEncounters(): Array<any> {
-    return this.db;
+  getAllEncounters({ userId }): Array<any> {
+    return this.db.filter((i) => i.userId === userId);
   }
 
   getOneEncounter(cmd): any {

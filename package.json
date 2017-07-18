@@ -29,8 +29,8 @@
     "husky": "^0.14.3",
     "jest": "~19.0.2",
     "lint-staged": "^4.0.1",
-    "prettier-eslint": "^6.4.2",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "prettier-eslint": "^6.4.2"
   },
   "dependencies": {
     "babel-runtime": "^6.23.0",
@@ -60,7 +60,7 @@
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "prestart": "npm run build",
     "start": "node ./dist/server.js",
-    "aat": "./node_modules/cucumber/bin/cucumber.js"
+    "aat": "./node_modules/cucumber/bin/cucumber.js",
     "lint:staged": "lint-staged"
   },
   "author": "Byron Sommardahl <byron@acklenavenue.com> (http://acklenavenue.com)",

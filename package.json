@@ -82,7 +82,8 @@
     ],
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/domain/**/*.js",
+      "!src/**/index.js"
     ]
   },
   "lint-staged": {

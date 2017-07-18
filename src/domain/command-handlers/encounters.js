@@ -1,5 +1,3 @@
-
-
 export default class Encounters {
   constructor(db) {
     this.db = db;
@@ -14,20 +12,27 @@ export default class Encounters {
   }
 
   removeEncounter(cmd) {
-    this.db = this.db.filter((w) => w.id !== cmd.id);
+    this.db.filter((w) => w.id === cmd.id)
+      .forEach((w) => {
+        this.db.splice(this.db.indexOf(w));
+      });
   }
 
   createEncounter(cmd) {
-    this.db.push({ id: this.db.length + 1, name: cmd.name, size: cmd.size });
+    const newEncounter = { id: this.db.length + 1, name: cmd.name, size: cmd.size };
+    this.db.push(newEncounter);
+    return newEncounter;
   }
 
   modifyEncounter(cmd) {
-    this.db = this.db.map((w) => {
-      const current = w;
-      if (current.id === cmd.id) {
-        current.size = cmd.size;
-      }
-      return current;
-    });
+    this.db = this.db
+      .filter((w) => w.id === cmd.id)
+      .map((w) => {
+        const current = w;
+        Object.keys(cmd.modify).forEach((key) => {
+          current[key] = cmd.modify[key];
+        });
+        return current;
+      });
   }
 }

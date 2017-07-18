@@ -1,3 +1,5 @@
+const encounters = require('./encounters');
+
 module.exports = [
-  require('./encounters'),
+  encounters,
 ];

@@ -67,7 +67,7 @@ If you have any questions regarding this project:
 
 ## Inspiration
 
-This boilerplate was initially inspired by [Jakub Synowiec](https://github.com/acklenavenue/glee), but taken several steps further to include a basic Hapi-based REST API with CQRS-style command dispatching.
+This boilerplate was initially inspired by [Jakub Synowiec](https://github.com/jsynowiec/node-flowtype-boilerplate), but taken several steps further to include a basic Hapi-based REST API with CQRS-style command dispatching.
 
 ## License
 MIT License. See the [LICENSE](https://github.com/acklenavenue/glee/blob/master/LICENSE) file.

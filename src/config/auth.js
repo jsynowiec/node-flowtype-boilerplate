@@ -1,3 +1,5 @@
+const hapiAuthJwt = require('hapi-auth-jwt2');
+
 const validate = (decoded, request, callback) => {
     // This validate function is meant to add any layers of security
     // we think are necessary. In most cases, no additional checks are
@@ -13,8 +15,8 @@ const validate = (decoded, request, callback) => {
   return callback(null, true);
 };
 
-export function register(server, options, next) {
-  server.register(require('hapi-auth-jwt2'), (err) => {
+export default function register(server, options, next) {
+  server.register(hapiAuthJwt, (err) => {
     if (err) {
       console.log(err);
     }

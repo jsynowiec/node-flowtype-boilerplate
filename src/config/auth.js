@@ -15,7 +15,7 @@ const validate = (decoded, request, callback) => {
   return callback(null, true);
 };
 
-export default function register(server, options, next) {
+exports.register = (server, options, next) => {
   server.register(hapiAuthJwt, (err) => {
     if (err) {
       throw new Error(err);
@@ -31,6 +31,6 @@ export default function register(server, options, next) {
     server.auth.default('jwt');
     next();
   });
-}
+};
 
 exports.register.attributes = { name: 'auth', version: '1.0.0' };

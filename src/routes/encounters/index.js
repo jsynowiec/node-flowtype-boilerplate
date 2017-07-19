@@ -1,7 +1,7 @@
 
 const Joi = require('joi');
 
-export default function register(server, options, next) {
+exports.register = (server, options, next) => {
   const dispatch = (cmd) => new Promise((resolve) => {
     server.app.dispatcher.dispatch(cmd)
         .subscribe((response) => {
@@ -76,6 +76,6 @@ export default function register(server, options, next) {
   }]);
 
   next();
-}
+};
 
 exports.register.attributes = require('./package.json');

@@ -9,30 +9,30 @@ export default class Encounters {
     return this.db.filter((i) => i.userId === userId);
   }
 
-  getOneEncounter(cmd): Encounter {
-    return this.db.filter((w) => w.id === cmd.id);
+  getOneEncounter({ id }): Encounter {
+    return this.db.filter((w) => w.id === id);
   }
 
-  removeEncounter(cmd) {
-    this.db.filter((w) => w.id === cmd.id)
+  removeEncounter({ id }) {
+    this.db.filter((w) => w.id === id)
       .forEach((w) => {
         this.db.splice(this.db.indexOf(w));
       });
   }
 
-  createEncounter(cmd): Encounter {
-    const newEncounter = { id: this.db.length + 1, name: cmd.name, bloodType: cmd.bloodType };
+  createEncounter({ name, bloodType }): Encounter {
+    const newEncounter = { id: this.db.length + 1, name, bloodType };
     this.db.push(newEncounter);
     return newEncounter;
   }
 
-  modifyEncounter(cmd) {
+  modifyEncounter({ id, modify }) {
     this.db = this.db
-      .filter((w) => w.id === cmd.id)
+      .filter((w) => w.id === id)
       .map((w) => {
         const current = w;
-        Object.keys(cmd.modify).forEach((key) => {
-          current[key] = cmd.modify[key];
+        Object.keys(modify).forEach((key) => {
+          current[key] = modify[key];
         });
         return current;
       });

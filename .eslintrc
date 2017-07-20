@@ -10,6 +10,7 @@
   ],
   "rules": {
     "import/no-extraneous-dependencies": ["error", {"packageDir": "./"}],  
+    "import/prefer-default-export": "off",
     "max-len": [
       2,
       120

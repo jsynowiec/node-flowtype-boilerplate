@@ -1,6 +1,6 @@
 const pkg = require('./package.json');
 
-exports.register = (server, options, next) => {
+export function register(server, options, next) {
   server.route({
     method: 'GET',
     path: '/status',
@@ -11,6 +11,6 @@ exports.register = (server, options, next) => {
     },
   });
   next();
-};
+}
 
 exports.register.attributes = pkg;

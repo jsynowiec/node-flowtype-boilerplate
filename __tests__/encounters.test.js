@@ -6,19 +6,37 @@ describe('The command-handler example, Encounters', () => {
     { id: 2, userId: 'abc' },
     { id: 3, userId: 'xyz' },
   ];
-  const encounters = new Encounters(db);
+  const mockRepository = {
+    getAll: jest.fn(() => db),
+    getById: jest.fn((id) => db.find((o) => o.id === id)),
+    update: jest.fn((id, modify) => {
+      const encounter = db.find((o) => o.id === id);
+      return Object.assign(encounter, modify);
+    }),
+    create: jest.fn((o) => {
+      db.push(o);
+      return o;
+    }),
+    delete: jest.fn((id) => {
+      const encounter = db.find((o) => o.id === id);
+      if (encounter) {
+        db.splice(db.indexOf(encounter, 1));
+      }
+    }),
+  };
+  const encounters = new Encounters({ encountersRepository: mockRepository });
 
   describe('when getting one encounter', () => {
     it('should return all encounters for the user', async () => {
       const match = await encounters.getOneEncounter({ id: 2 });
-      expect(match).toEqual(db.filter((e) => e.id === 2));
+      expect(match).toEqual(db.find((e) => e.id === 2));
     });
   });
 
   describe('when getting a list of encounters', () => {
     it('should return all encounters for the user', async () => {
-      const matches = await encounters.getAllEncounters({ userId: 'abc' });
-      expect(matches).toEqual(db.filter((e) => e.userId === 'abc'));
+      const matches = await encounters.getAllEncounters();
+      expect(matches).toEqual(db);
     });
   });
 

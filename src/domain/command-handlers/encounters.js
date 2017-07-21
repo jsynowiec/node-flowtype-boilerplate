@@ -1,40 +1,27 @@
 import type Encounter from '../types/encounter';
 
 export default class Encounters {
-  constructor(db: Array<Encounter>) {
-    this.db = db;
+  constructor({ encountersRepository }) {
+    this.repository = encountersRepository;
   }
 
-  getAllEncounters({ userId }): Array<Encounter> {
-    return this.db.filter((i) => i.userId === userId);
+  getAllEncounters(): Array<Encounter> {
+    return this.repository.getAll();
   }
 
   getOneEncounter({ id }): Encounter {
-    return this.db.filter((w) => w.id === id);
+    return this.repository.getById(id);
   }
 
   removeEncounter({ id }) {
-    this.db.filter((w) => w.id === id)
-      .forEach((w) => {
-        this.db.splice(this.db.indexOf(w));
-      });
+    this.repository.delete(id);
   }
 
-  createEncounter({ name, bloodType }): Encounter {
-    const newEncounter = { id: this.db.length + 1, name, bloodType };
-    this.db.push(newEncounter);
-    return newEncounter;
+  createEncounter(encounter): Encounter {
+    return this.repository.create(encounter);
   }
 
-  modifyEncounter({ id, modify }) {
-    this.db = this.db
-      .filter((w) => w.id === id)
-      .map((w) => {
-        const current = w;
-        Object.keys(modify).forEach((key) => {
-          current[key] = modify[key];
-        });
-        return current;
-      });
+  modifyEncounter({ id, modify }): Promise<Encounter> {
+    return this.repository.update(id, modify);
   }
 }

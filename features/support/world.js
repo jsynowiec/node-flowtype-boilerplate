@@ -4,7 +4,6 @@ const { defineSupportCode } = require('cucumber');
 
 const baseUrl = 'http://localhost:8000';
 
-
 function CustomWorld() {
   this.request = request;
   this.get = (uri, headers) => request.get({

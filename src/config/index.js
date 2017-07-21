@@ -1,15 +1,20 @@
-const connections = require('./connections.js');
+/* eslint-disable import/no-dynamic-require, global-require */
+
 const fs = require('fs');
 
-const infrastructurePlugins = require('./infrastructure.js');
+const getDirectoriesInPath = (p) => fs.readdirSync(p).filter((f) => fs.statSync(`${p}/${f}`).isDirectory());
+const getFilesInDirectory = (p) => fs.readdirSync(p).filter((f) => !fs.statSync(`${p}/${f}`).isDirectory());
+const getArrayFromFiles = (path) => getFilesInDirectory(path)
+                                      .map((filename) => require(`${path}/${filename}`).default)
+                                      .reduce((prev, curr) => prev.concat(curr));
 
-const dirs = (p) => fs.readdirSync(p).filter((f) => fs.statSync(`${p}/${f}`).isDirectory());
-const modulePlugins = dirs(`${__dirname}/../routes`).map((d) => ({ plugin: `./routes/${d}` }));
-const registrations = [].concat(infrastructurePlugins, modulePlugins);
+const connections = getArrayFromFiles(`${__dirname}/connections`);
 
-const manifest = {
+const infrastructurePlugins = getArrayFromFiles(`${__dirname}/registrations`);
+const routePlugins = getDirectoriesInPath(`${__dirname}/../routes`).map((d) => ({ plugin: `./routes/${d}` }));
+const registrations = [].concat(infrastructurePlugins, routePlugins);
+
+export {
   connections,
   registrations,
 };
-
-module.exports = manifest;

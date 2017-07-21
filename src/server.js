@@ -1,8 +1,4 @@
 /* eslint-disable no-param-reassign, no-console */
-const mototaxi = require('mototaxi');
-const mototaxiConfig = require('./config/mototaxi.js');
-
-const dispatcher = mototaxi.getDispatcher(mototaxiConfig);
 
 const Glue = require('glue');
 const manifest = require('./config');
@@ -16,8 +12,6 @@ Glue.compose(manifest, options, (err, server) => {
   if (err) {
     throw err;
   }
-
-  server.app.dispatcher = dispatcher;
 
   server.start(() => {
     console.log(`✅  ${Pack.name} started.`);

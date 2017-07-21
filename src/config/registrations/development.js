@@ -1,6 +1,6 @@
-const Pack = require('../package.json');
+const Pack = require('../../../package.json');
 
-module.exports = [
+export default [
   {
     plugin: {
       register: 'inert',
@@ -9,11 +9,6 @@ module.exports = [
   {
     plugin: {
       register: 'vision',
-    },
-  },
-  {
-    plugin: {
-      register: './config/auth',
     },
   },
   {
@@ -30,21 +25,6 @@ module.exports = [
   {
     plugin: {
       register: 'blipp',
-    },
-  },
-  {
-    plugin: {
-      register: 'good',
-      options: {
-        reporters: {
-          console: [
-            {
-              module: 'good-console',
-            },
-            'stdout',
-          ],
-        },
-      },
     },
   },
 ];

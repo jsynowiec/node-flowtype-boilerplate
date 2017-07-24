@@ -1,7 +1,6 @@
 [![Dev dependencies][dependencies-badge]][dependencies]
 [![Node.js version][nodejs-badge]][nodejs]
 [![NPM version][npm-badge]][npm]
-[![Yarn version][yarn-badge]][yarn]
 [![Build Status][travis-badge]][travis-ci]
 
 [![MIT License][license-badge]][LICENSE]
@@ -27,27 +26,20 @@ Provides a basic template, batteries included:
 + [Type definitions][flow-typed] for Jest,
 + [NPM scripts for common operations](#available-scripts),
 + [.editorconfig][editorconfig] for consistent file format,
-+ [Yarn][yarn] lockfile so only verified and up-to-date dependencies are installed.
 
 ## Quick start
 
-This project requires [Node.js][nodejs] 6.9 (LTS) or later (but should work with any 6.2 or newer release) and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
+This project requires [Node.js][nodejs] 6.9 (LTS) or later (but should work with any 6.2 or newer release) and [NPM][npm]. Make sure you have those installed. Then just type following commands:
 
 ```
 git clone https://github.com/jsynowiec/node-flowtype-boilerplate
 cd node-flowtype-boilerplate
-yarn
-```
-
-or if you don't have yarn installed
-
-```
 npm install
 ```
 
 ## Available scripts
 
-Run using either `npm run <script>` or `yarn run <script>` comand.
+Run using `npm run <script>` comand.
 
 + `clean` - remove coverage data, Jest cache and transpiled files,
 + `lint` - lint source files and tests,
@@ -79,8 +71,6 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [nodejs]: https://nodejs.org/dist/latest-v6.x/docs/api/
 [npm-badge]: https://img.shields.io/badge/npm->=%203.10.8-blue.svg?style=flat-square
 [npm]: https://docs.npmjs.com/
-[yarn-badge]: https://img.shields.io/badge/yarn->=%200.19.0-blue.svg?style=flat-square
-[yarn]: https://yarnpkg.com
 [travis-badge]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate.svg?branch=master
 [travis-ci]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
@@ -101,7 +91,6 @@ MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boiler
 [eslint]: http://eslint.org/
 [airbnb-base]: https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
 [eslint-flowtype]: https://www.npmjs.com/package/eslint-plugin-flowtype
-[yarn]: https://github.com/yarnpkg/yarn
 [flow-typed]: https://github.com/flowtype/flow-typed
 [editorconfig]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/.editorconfig
 

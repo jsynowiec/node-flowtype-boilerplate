@@ -48,6 +48,7 @@
     "inert": "^4.2.0",
     "joi": "^10.6.0",
     "mototaxi": "^1.1.58",
+    "nodemon": "^1.11.0",
     "vision": "^4.1.1"
   },
   "scripts": {
@@ -62,7 +63,7 @@
     "watch": "babel --watch src --out-dir dist --source-maps inline --copy-files",
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "prestart": "npm run build",
-    "start": "node ./dist/server.js",
+    "start_": "node ./dist/server.js",
     "aat": "./node_modules/cucumber/bin/cucumber.js",
     "lint:staged": "lint-staged"
   },

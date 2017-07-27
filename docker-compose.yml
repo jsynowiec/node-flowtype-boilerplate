@@ -3,9 +3,9 @@ version: "2"
 services:
   web:
     build: .
-    command: nodemon --debug=5858
+    command: nodemon --inspect=0.0.0.0:9229 ./dist/server.js
     volumes:
       - .:/code
     ports:
       - "8000:8000"
-      - "5858:5858"
+      - "9229:9229"

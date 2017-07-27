@@ -10,4 +10,6 @@ RUN mv /code/node_modules /node_modules
 
 COPY . /code
 
-CMD ["npm", "start"]
+EXPOSE 9229
+
+#CMD ["npm", "start"]

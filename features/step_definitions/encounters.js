@@ -5,7 +5,7 @@ const { defineSupportCode } = require('cucumber');
 defineSupportCode(({ Given, When, Then }) => {
   
   Given('a doctor with valid credentials', function (callback) {
-    this.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFudGhvbnkgVmFsaWQgVXNlciIsImlhdCI6MTQyNTQ3MzUzNX0.KA68l60mjiC8EXaC2odnjFwdIDxE__iDu5RwLdN1F2A';
+    this.context.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFudGhvbnkgVmFsaWQgVXNlciIsImlhdCI6MTQyNTQ3MzUzNX0.KA68l60mjiC8EXaC2odnjFwdIDxE__iDu5RwLdN1F2A';
     callback();
   });
 
@@ -19,7 +19,10 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   When('I request a list of encounters', function (callback) {
-    this.get('/encounters', { Authorization: this.token })
+    this.get('/encounters', { Authorization: this.context.token })
+            .on('response', (data) => {
+              console.log(data);
+            })
             .on('data', (data) => {
               this.context.encounters = JSON.parse(data);
               callback();

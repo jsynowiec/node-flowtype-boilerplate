@@ -14,5 +14,6 @@
       "minified": true
     }
   },
-  "retainLines": true
+  "retainLines": true,
+  "sourceMaps": true
 }

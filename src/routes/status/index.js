@@ -7,7 +7,9 @@ export function register(server, options, next) {
     config: {
       auth: false,
       tags: ['api'],
-      handler: (request, reply) => reply(pkg),
+      handler: (request, reply) => {
+        reply(pkg);
+      }
     },
   });
   next();

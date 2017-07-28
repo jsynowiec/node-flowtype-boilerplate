@@ -9,7 +9,7 @@ export function register(server, options, next) {
       tags: ['api'],
       handler: (request, reply) => {
         reply(pkg);
-      }
+      },
     },
   });
   next();

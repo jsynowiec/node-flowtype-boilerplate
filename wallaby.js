@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 module.exports = (wallaby) => ({
   files: [
     'src/**/*.js',
@@ -12,7 +14,7 @@ module.exports = (wallaby) => ({
   },
 
   compilers: {
-    '**/*.js': wallaby.compilers.babel(),
+    '**/*.js': wallaby.compilers.babel({ babel: require('babel-core') }),
   },
 
   testFramework: 'jest',

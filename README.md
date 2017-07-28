@@ -69,6 +69,9 @@ If you have any questions regarding this project:
 
 This boilerplate was initially inspired by [Jakub Synowiec](https://github.com/jsynowiec/node-flowtype-boilerplate), but taken several steps further to include a basic Hapi-based REST API with CQRS-style command dispatching.
 
+## Videos
+- Sample development workflow with Docker and debugging via Inspector - http://youtu.be/c-JCVQlwWgE
+
 ## License
 MIT License. See the [LICENSE](https://github.com/acklenavenue/glee/blob/master/LICENSE) file.
 

@@ -63,7 +63,7 @@
     "watch": "babel --watch src --out-dir dist --source-maps inline --copy-files",
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "prestart": "npm run build",
-    "start_": "node ./dist/server.js",
+    "start": "node ./dist/server.js",
     "aat": "./node_modules/cucumber/bin/cucumber.js",
     "lint:staged": "lint-staged"
   },
@@ -79,20 +79,12 @@
   "homepage": "https://github.com/acklenavenue/glee#readme",
   "jest": {
     "testEnvironment": "node",
-    "moduleFileExtensions": [
-      "js"
-    ],
+    "moduleFileExtensions": ["js"],
     "coverageDirectory": "coverage",
-    "collectCoverageFrom": [
-      "src/domain/**/*.js",
-      "!src/**/index.js"
-    ]
+    "collectCoverageFrom": ["src/domain/**/*.js", "!src/**/index.js"]
   },
   "lint-staged": {
-    "*.js": [
-      "lint",
-      "git add"
-    ]
+    "*.js": ["lint", "git add"]
   },
   "pre-commit": "lint:staged"
 }

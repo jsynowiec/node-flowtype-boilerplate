@@ -1,0 +1,424 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  EnvType:
+    Description: Environment type.
+    Type: String
+    AllowedValues:
+      - dev
+      - staging
+      - production
+    ConstraintDescription: must specify production,staging or dev.
+  AppName:
+    Description: Application Name.
+    Type: String
+  AppVersion:
+    Description: App Version.
+    Type: String
+  CidrBlock:
+    Description: VPC first 3 value of the ip.
+    Type: String
+Mappings:
+  Environments:
+    dev:
+      "InstanceType": "t2.micro"
+      "RetentionInDays": "14"
+      "DeploymentPolicy": "Rolling"
+      "MinSize": "1"
+      "MaxSize": "2"
+      "ApplicationName": "aqua-gem-backend"
+      "DBInstanceClass": "db.t2.micro"
+      "HostedZoneName": "acklenavenueclient.com."
+      "DNSRecordType" : "CNAME"
+    staging:
+      "InstanceType": "t2.micro"
+      "RetentionInDays": "90"
+      "DeploymentPolicy": "RollingWithAdditionalBatch"
+      "MinSize": "1"
+      "MaxSize": "2"
+      "ApplicationName": "aqua-gem-backend"
+      "DBInstanceClass": "db.t2.micro"
+      "HostedZoneName": "acklenavenueclient.com."
+      "DNSRecordType" : "CNAME"
+    production:
+      "InstanceType": "t2.micro"
+      "RetentionInDays": "90"
+      "DeploymentPolicy": "RollingWithAdditionalBatch"
+      "MinSize": "2"
+      "MaxSize": "4"
+      "ApplicationName": "note-servicing-platform"
+      "DBInstanceClass": "db.t2.micro"
+      "HostedZoneName": "acklenavenueclient.com."
+      "DNSRecordType" : "CNAME"
+Conditions:
+  CreateDevResources: !Equals [ !Ref EnvType, dev ]
+  CreateStagingResources: !Equals [ !Ref EnvType, staging ]
+  CreateProdResources: !Equals [ !Ref EnvType, production ]
+  DontCreateProdResources: !Not [!Equals [!Ref EnvType, production]]
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".0/24" ] ]
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-vpc" ] ]
+  Private1aSBN:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".0/27" ] ]
+      AvailabilityZone: "us-east-1a"
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-private-ae-1a" ] ]
+  Private1cSBN:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".32/27" ] ]
+      AvailabilityZone: "us-east-1c"
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-private-ae-1c" ] ]
+  Private1dSBN:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".64/27" ] ]
+      AvailabilityZone: "us-east-1d"
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-private-ae-1d" ] ]
+  Private1eSBN:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".96/27" ] ]
+      AvailabilityZone: "us-east-1e"
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-private-ae-1e" ] ]
+  Public1aSBN:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".128/27" ] ]
+      AvailabilityZone: "us-east-1a"
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-public-ae-1a" ] ]
+  Public1cSBN:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Join [ "", [ !Ref CidrBlock,".160/27" ] ]
+      AvailabilityZone: "us-east-1c"
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-public-ae-1c" ] ]
+  Public1dSBN:
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId: !Ref VPC
+        CidrBlock: !Join [ "", [ !Ref CidrBlock,".192/27" ] ]
+        AvailabilityZone: "us-east-1d"
+        Tags:
+        - Key: Name
+          Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-public-ae-1d" ] ]
+  Public1eSBN:
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId: !Ref VPC
+        CidrBlock: !Join [ "", [ !Ref CidrBlock,".224/27" ] ]
+        AvailabilityZone: "us-east-1e"
+        Tags:
+        - Key: Name
+          Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-public-ae-1e" ] ]
+  InternetGateway:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-vpc-igw" ] ]
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+  EIPNatGateway:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+  NAT:
+    DependsOn: EIPNatGateway
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId:
+        Fn::GetAtt:
+        - EIPNatGateway
+        - AllocationId
+      SubnetId: !Ref Public1eSBN
+  RouteTablePrivate:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-vpc-private-rt" ] ]
+  Private1aSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Private1aSBN
+      RouteTableId: !Ref RouteTablePrivate
+  Private1cSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Private1cSBN
+      RouteTableId: !Ref RouteTablePrivate
+  Private1dSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Private1dSBN
+      RouteTableId: !Ref RouteTablePrivate
+  Private1eSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Private1eSBN
+      RouteTableId: !Ref RouteTablePrivate
+  PrivateRoute:
+    Type: AWS::EC2::Route
+    DependsOn: NAT
+    Properties:
+      RouteTableId: !Ref RouteTablePrivate
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NAT
+  RouteTablePublic:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-vpc-public-rt" ] ]
+  Public1aSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Public1aSBN
+      RouteTableId: !Ref RouteTablePublic
+  Public1cSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Public1cSBN
+      RouteTableId: !Ref RouteTablePublic
+  Public1dSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Public1dSBN
+      RouteTableId: !Ref RouteTablePublic
+  Public1eSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Public1eSBN
+      RouteTableId: !Ref RouteTablePublic
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGateway
+    Properties:
+      RouteTableId: !Ref RouteTablePublic
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+  DBSubnetGroup:
+    Type: "AWS::RDS::DBSubnetGroup"
+    DependsOn: TargetSG
+    Properties:
+      DBSubnetGroupDescription: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-DBSubnetGroup" ] ]
+      SubnetIds:
+        - !Ref Private1aSBN
+        - !Ref Private1cSBN
+        - !Ref Private1dSBN
+        - !Ref Private1eSBN
+  PostgresDB:
+    Type: "AWS::RDS::DBInstance"
+    DependsOn: DBSubnetGroup
+    Properties:
+      AllocatedStorage: "10"
+      DBInstanceClass: !FindInMap [ Environments, !Ref EnvType, DBInstanceClass ]
+      Engine: "postgres"
+      EngineVersion: "9.4.11"
+      DBName: !Join [ "", [ "aquagem", !Ref EnvType ] ]
+      DBInstanceIdentifier: !Join [ "", [ "aquagem", !Ref EnvType ] ]
+      DBSubnetGroupName: !Ref DBSubnetGroup
+      MasterUsername: "acklen"
+      MasterUserPassword: "acklenavenue"
+      VPCSecurityGroups:
+        - !Ref TargetSG
+  TargetSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VPC
+      GroupDescription: !Join [ "", [ !Ref AppName," Target Security Group" ] ]
+      Tags:
+      - Key: Name
+        Value: !Join [ "", [ !Ref AppName,"-",!Ref EnvType,"-sg" ] ]
+  InboundRule:
+    Type: AWS::EC2::SecurityGroupIngress
+    DependsOn: TargetSG
+    Properties:
+      IpProtocol: -1
+      FromPort: '0'
+      ToPort: '65535'
+      CidrIp: "0.0.0.0/0"
+      GroupId:
+        Fn::GetAtt:
+        - TargetSG
+        - GroupId
+  ElasticBeanStalkEnvironment:
+    Type: "AWS::ElasticBeanstalk::Environment"
+    DependsOn: TargetSG
+    Properties:
+      ApplicationName: !FindInMap [ Environments, !Ref EnvType, ApplicationName ]
+      Description: !Ref AppName
+      EnvironmentName: !Join [ "", [ !FindInMap [ Environments, !Ref EnvType, ApplicationName ],"-", !Ref EnvType ] ]
+      SolutionStackName: "64bit Amazon Linux 2016.09 v4.0.1 running Node.js"
+      OptionSettings:
+        -
+          Namespace: "aws:elasticbeanstalk:environment"
+          OptionName: "EnvironmentType"
+          Value: "LoadBalanced"
+        -
+          Namespace: "aws:autoscaling:asg"
+          OptionName: "MinSize"
+          Value: !FindInMap [ Environments, !Ref EnvType, MinSize ]
+        -
+          Namespace: "aws:autoscaling:asg"
+          OptionName: "MaxSize"
+          Value: !FindInMap [ Environments, !Ref EnvType, MaxSize ]
+        -
+          Namespace: "aws:autoscaling:trigger"
+          OptionName: "MeasureName"
+          Value: "CPUUtilization"
+        -
+          Namespace: "aws:autoscaling:trigger"
+          OptionName: "Unit"
+          Value: "Percent"
+        -
+          Namespace: "aws:autoscaling:trigger"
+          OptionName: "LowerThreshold"
+          Value: 20
+        -
+          Namespace: "aws:autoscaling:trigger"
+          OptionName: "UpperThreshold"
+          Value: 50
+        -
+          Namespace: "aws:elasticbeanstalk:container:nodejs"
+          OptionName: "NodeCommand"
+          Value: "node ./dist/server.js"
+        -
+          Namespace: "aws:autoscaling:launchconfiguration"
+          OptionName: "IamInstanceProfile"
+          Value: "aws-elasticbeanstalk-ec2-role"
+        -
+          Namespace: "aws:autoscaling:launchconfiguration"
+          OptionName: "InstanceType"
+          Value: !FindInMap [ Environments, !Ref EnvType, InstanceType ]
+        -
+          Namespace: "aws:ec2:vpc"
+          OptionName: "VPCId"
+          Value: !Ref VPC
+        -
+          Namespace: "aws:ec2:vpc"
+          OptionName: "ELBSubnets"
+          Value: !Join [ ",", [ !Ref Public1aSBN, !Ref Public1cSBN, !Ref Public1dSBN,!Ref Public1eSBN ]]
+        -
+          Namespace: "aws:ec2:vpc"
+          OptionName: "Subnets"
+          Value: !Join [ ",", [ !Ref Private1aSBN, !Ref Private1cSBN, !Ref Private1dSBN,!Ref Private1eSBN ]]
+        -
+          Namespace: "aws:autoscaling:launchconfiguration"
+          OptionName: "SecurityGroups"
+          Value: !Ref TargetSG
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "APP_VERSION"
+          Value: !Ref AppVersion
+        -
+          Namespace: "aws:elb:loadbalancer"
+          OptionName: "SecurityGroups"
+          Value: !Ref TargetSG
+        -
+          Namespace: "aws:elasticbeanstalk:cloudwatch:logs"
+          OptionName: "DeleteOnTerminate"
+          Value: "false"
+        -
+          Namespace: "aws:elasticbeanstalk:cloudwatch:logs"
+          OptionName: "RetentionInDays"
+          Value: !FindInMap [ Environments, !Ref EnvType, RetentionInDays ]
+        -
+          Namespace: "aws:elasticbeanstalk:cloudwatch:logs"
+          OptionName: "StreamLogs"
+          Value: "true"
+        -
+          Namespace: "aws:elasticbeanstalk:command"
+          OptionName: "DeploymentPolicy"
+          Value: !FindInMap [ Environments, !Ref EnvType, DeploymentPolicy ]
+        -
+          Namespace: "aws:autoscaling:launchconfiguration"
+          OptionName: "EC2KeyName"
+          Value: "acklenavenue"
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "APP_VERSION"
+          Value: !Ref  AppVersion
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "PG_DATABASE"
+          Value: !Ref PostgresDB
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "PG_HOST"
+          Value: !GetAtt PostgresDB.Endpoint.Address
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "PG_PASSWORD"
+          Value: "acklenavenue"
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "PG_USER"
+          Value: "acklen"
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "PG_PORT"
+          Value: !GetAtt PostgresDB.Endpoint.Port
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "NODE_ENV"
+          Value: "production"
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "LOGGLY_TOKEN"
+          Value: "someToken"
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "LOGGLY_SUBDOMAIN"
+          Value: "subdomain.acklen"
+
+      VersionLabel: !Ref AppVersion
+  DNSRecord:
+    Type: AWS::Route53::RecordSet
+    DependsOn: ElasticBeanStalkEnvironment
+    Condition: DontCreateProdResources
+    Properties:
+      HostedZoneName: !FindInMap [ Environments, !Ref EnvType, HostedZoneName ]
+      Comment: DNS name for my kong.
+      Name: !Join [ "", [ !FindInMap [ Environments, !Ref EnvType, ApplicationName ],"-", !Ref EnvType ,".",!FindInMap [ Environments, !Ref EnvType, HostedZoneName ] ]]
+      Type: !FindInMap [ Environments, !Ref EnvType, DNSRecordType ]
+      TTL: '300'
+      ResourceRecords:
+      - !GetAtt ElasticBeanStalkEnvironment.EndpointURL
+Outputs:
+  ElasticBeanstalk:
+    Description: ElasticBeanstalk URL
+    Value: !GetAtt ElasticBeanStalkEnvironment.EndpointURL
+  EndPointURL:
+    Condition: DontCreateProdResources
+    Description: Endpoint URL
+    Value: !Ref DNSRecord

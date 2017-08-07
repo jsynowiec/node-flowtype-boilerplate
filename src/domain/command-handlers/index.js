@@ -1,5 +1,5 @@
-const encounters = require('./encounters');
+import container from '../../config/container';
 
-module.exports = [
-  encounters,
-];
+module.exports = Object.keys(container.registrations)
+  .filter((registration) => registration.match(/Handler$/))
+  .map((handler) => container.resolve(handler));

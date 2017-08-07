@@ -11,6 +11,7 @@ coverage/
 
 # Transpiled files
 dist/
+zip/
 
 # VS Code
 .vscode
@@ -19,3 +20,10 @@ jsconfig.json
 # Misc
 .DS_Store
 tmp/
+
+# Sublime Text
+*.sublime-*
+
+
+src/config/sequelize.js
+src/config/loggly.js

@@ -53,7 +53,12 @@ export function register(server, options, next) {
       auth: 'jwt',
       tags: ['api'],
       handler: (request, reply) => {
-        reply(dispatch({ type: 'createEncounter', name: 'purple-urple', size: 'ginormous' }));
+        reply(dispatch({
+          type: 'createEncounter',
+          name: 'purple-urple',
+          age: 25,
+          bloodType: 'B+',
+        }));
       },
     },
   }, {
@@ -63,7 +68,7 @@ export function register(server, options, next) {
       auth: 'jwt',
       tags: ['api'],
       handler: (request, reply) => {
-        reply(dispatch({ type: 'modifyEncounter', id: request.params.id, size: 'smallish' }));
+        reply(dispatch({ type: 'modifyEncounter', id: request.params.id, modify: { name: 'cambióaaaaaaa', age: 40 } }));
       },
       validate: {
         params: {

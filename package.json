@@ -65,7 +65,9 @@
     "prestart": "npm run build",
     "start": "node ./dist/server.js",
     "aat": "./node_modules/cucumber/bin/cucumber.js",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "docker:start": "docker-compose up --build",
+    "docker:stop": "docker-compose down"
   },
   "author": "Byron Sommardahl <byron@acklenavenue.com> (http://acklenavenue.com)",
   "license": "MIT",

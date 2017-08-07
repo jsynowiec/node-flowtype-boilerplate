@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign, no-console */
+const models = require('./models');
 
 const Glue = require('glue');
 const manifest = require('./config');
@@ -13,7 +14,9 @@ Glue.compose(manifest, options, (err, server) => {
     throw err;
   }
 
-  server.start(() => {
-    console.log(`✅  ${Pack.name} started.`);
+  models.sequelize.sync().then(() => {
+    server.start(() => {
+      console.log(`✅  ${Pack.name} started.`);
+    });
   });
 });

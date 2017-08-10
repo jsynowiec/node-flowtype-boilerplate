@@ -28,21 +28,30 @@ Provides a basic Rest API template:
 + [Yarn][yarn] lockfile so only verified and up-to-date dependencies are installed.
 + Guidance for CQRS architecture.
 
+## Global Install
+
+`npm install -g yarn`
+
 ## Quick start
 
-This project requires [Node.js][nodejs] 6.9 (LTS) or later (but should work with any 6.2 or newer release) and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
+This project requires [Node.js][nodejs] 8.2 or later and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
 
 ```
 git clone https://github.com/acklenavenue/glee
-cd node-flowtype-boilerplate
+cd glee
 yarn
 ```
+Then proceed to database setup and logging setup.
 
-or if you don't have yarn installed
+## Database Setup
+You need PostgreSQL to run glee locally. To install postgres on Ubuntu, check out this awesome tutorial: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04 (for Windows, head to google).
 
-```
-npm install
-```
+Before running glee for the first time, you need to configure it to use your database, local or otherwise. The config file for the database is located in `src/config/sequalize.js`. After a fresh clone, the file does not exist. You can create that file following this template: https://github.com/AcklenAvenue/glee/blob/master/src/config/sequelize.js.sample
+
+You can store multiple environment configurations in the same file. Just make sure the object keys in your file match your development environment: `[development, staging, production]`
+
+## Logging Setup
+Before running glee for the first time, you need to configure it for logging. By default, glee is set up to log to Loggly.com. The config file for loggly is located in `src/config/loggly.js`. After a fresh clone, the file does not exist. You can create that file following this template: https://github.com/AcklenAvenue/glee/blob/master/src/config/loggly.js.sample
 
 ## Available scripts
 
@@ -56,6 +65,7 @@ Run using either `npm run <script>` or `yarn run <script>` comand.
 + `test:watch` - interactive watch mode to automatically re-run tests, 
 + `build` - compile source files,
 + `build:watch` - interactive watch mode, compile sources on change.
++ `aat` - run automated acceptance tests
 
 ## Questions
 

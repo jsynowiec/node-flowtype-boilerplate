@@ -7,7 +7,7 @@
     "node": ">=6.9"
   },
   "devDependencies": {
-    "aws-sdk": "^2.95.0",
+    "aws-sdk": "^2.96.0",
     "babel-cli": "^6.24.1",
     "babel-core": "~6.24.1",
     "babel-eslint": "^7.2.3",
@@ -41,7 +41,7 @@
     "request": "^2.81.0"
   },
   "dependencies": {
-    "awilix": "^2.6.0",
+    "awilix": "^2.7.0",
     "babel-runtime": "^6.25.0",
     "blipp": "^2.3.0",
     "global": "^4.3.2",
@@ -55,7 +55,7 @@
     "hapi-swagger": "^7.7.0",
     "inert": "^4.2.1",
     "joi": "^10.6.0",
-    "mototaxi": "^1.1.59",
+    "mototaxi": "^1.1.68",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2",
@@ -76,6 +76,8 @@
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "prestart": "npm run build",
     "start": "node ./dist/server.js",
+    "predebug": "npm run build",
+    "debug": "nodemon --inspect=0.0.0.0:9229 ./dist/server.js",
     "aat": "./node_modules/cucumber/bin/cucumber.js",
     "lint:staged": "lint-staged",
     "docker:start": "docker-compose up --build",

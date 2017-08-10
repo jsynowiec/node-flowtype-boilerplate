@@ -1,8 +1,8 @@
 import type Encounter from '../../domain/types/encounter';
 
 export default class Encounters {
-  constructor({ EncounterModel }) {
-    this.model = EncounterModel;
+  constructor({ encounterModel }) {
+    this.model = encounterModel;
   }
 
   getAll(): Promise<Array<Encounter>> {
@@ -18,13 +18,14 @@ export default class Encounters {
   }
 
   update(id: number, encounter: Encounter): Promise<Encounter> {
-    return this.model.update(encounter, {
-      where: { id },
-      returning: true,
-      plain: true,
-    })
-    .then((result) => result && result[1])
-    .catch(() => ({ error: 'Encounter not found' }));
+    return this.model
+      .update(encounter, {
+        where: { id },
+        returning: true,
+        plain: true,
+      })
+      .then((result) => result && result[1])
+      .catch(() => ({ error: 'Encounter not found' }));
   }
 
   delete(id: number): Promise<number> {

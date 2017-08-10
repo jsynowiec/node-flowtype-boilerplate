@@ -1,19 +1,27 @@
 /* eslint-disable no-console, no-param-reassign */
 
-const mototaxi = require('mototaxi');
-const domain = require('../../domain');
-const container = require('../container');
+import * as mototaxi from 'mototaxi';
+import container from '../container';
+import { commandHandlers } from '../../domain';
 
 export function register(server, options, next) {
-  const config = {
-    logger: {
-      log: (message) => {
-        console.log(`mototaxi: ${message}`);
-      },
+  const logger = {
+    log: (message) => {
+      console.log(`mototaxi: ${message}`);
     },
-    commandHandlers: domain.commandHandlers,
-    resolve: (handlerType) => container.resolve(handlerType),
   };
+
+  const resolve = (handlerType) => {
+    const resolved = container.resolve(`${handlerType.name}Handler`);
+    return resolved;
+  };
+
+  const config = {
+    logger,
+    commandHandlers,
+    resolve,
+  };
+
   const dispatcher = mototaxi.getDispatcher(config);
   server.app.dispatcher = dispatcher;
 

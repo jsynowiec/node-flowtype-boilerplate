@@ -5,5 +5,12 @@ module.exports = {
     "database": process.env.PG_DATABASE,
     "host": process.env.PG_HOST,
     "dialect": "postgres"
-  }
-}
+  },
+  development: {
+    username: 'postgres',
+    password: 'password',
+    database: 'postgres',
+    host: 'localhost',
+    dialect: 'postgres',
+  },
+};

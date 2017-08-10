@@ -6,8 +6,8 @@ before_install:
   - npm install -g yarn
 install:
   - yarn
-  - cp src/config/loggly.js.sample /src/config/loggly.js
-  - cp src/config/sequelize.js.sample /src/config/sequelize.js
+  - cp ./src/config/loggly.js.sample ./src/config/loggly.js
+  - cp ./src/config/sequelize.js.sample ./src/config/sequelize.js
 script:
   - yarn run test
 cache:

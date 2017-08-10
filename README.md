@@ -32,6 +32,11 @@ Provides a basic Rest API template:
 
 `npm install -g yarn`
 
+## Database Setup
+You need PostgreSQL to run glee locally. To install postgres on Ubuntu, check out this awesome tutorial: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04 (for Windows, head to google).
+
+Glee comes with default database configurarion for `localhost`. You can change your db config by modifying `./src/config/sequelize.js`. This config file is ignored by git, so it will not get checked in with your secrets.
+
 ## Quick start
 
 This project requires [Node.js][nodejs] 8.2 or later and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
@@ -40,18 +45,10 @@ This project requires [Node.js][nodejs] 8.2 or later and [NPM][npm], [Yarn][yarn
 git clone https://github.com/acklenavenue/glee
 cd glee
 yarn
+yarn run first-time
 ```
-Then proceed to database setup and logging setup.
-
-## Database Setup
-You need PostgreSQL to run glee locally. To install postgres on Ubuntu, check out this awesome tutorial: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04 (for Windows, head to google).
-
-Before running glee for the first time, you need to configure it to use your database, local or otherwise. The config file for the database is located in `src/config/sequalize.js`. After a fresh clone, the file does not exist. You can create that file following this template: https://github.com/AcklenAvenue/glee/blob/master/src/config/sequelize.js.sample
-
-You can store multiple environment configurations in the same file. Just make sure the object keys in your file match your development environment: `[development, staging, production]`
-
 ## Logging Setup
-Before running glee for the first time, you need to configure it for logging. By default, glee is set up to log to Loggly.com. The config file for loggly is located in `src/config/loggly.js`. After a fresh clone, the file does not exist. You can create that file following this template: https://github.com/AcklenAvenue/glee/blob/master/src/config/loggly.js.sample
+Glee comes with default logging configurarion for Loggly.com. You can change your logging config by modifying `./src/config/loggly.js`. This config file is ignored by git, so it will not get checked in with your secrets.
 
 ## Available scripts
 

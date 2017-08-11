@@ -26,6 +26,8 @@ Glee provides a basic Rest API template:
 + [NPM scripts for common operations](#available-scripts),
 + [.editorconfig][editorconfig] for consistent file format,
 + [Yarn][yarn] lockfile so only verified and up-to-date dependencies are installed.
++ PostreSQL Database integration with migrations
++ Feature Toggling
 + Authentication by JWT (requires separate IDP for auth and user management)
 + API documentation by Swagger (auto-generated)
 + Automated Acceptance Testing with Cucumber

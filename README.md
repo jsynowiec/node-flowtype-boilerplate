@@ -12,9 +12,9 @@
 
 # glee
 
-Hapi boilerplate with glue, jest, ES6+ (stage-3), build scripts and everything you need to quick-start backend development with Flow type checking.
+Glee is a back-end starting point for development teams who use a specific stack of technologies and methodologies (see below). Glee includes build scripts, sample/template code and everything you need to quick-start back-end development. Glee's requirements were inspired by https://gist.github.com/bsommardahl/c2d57d51242b2336b7876f20fcf16ac6.
 
-Provides a basic Rest API template:
+Glee provides a basic Rest API template:
 
 + ES6 + babel,
   + Removes Flow type annotations,
@@ -26,7 +26,12 @@ Provides a basic Rest API template:
 + [NPM scripts for common operations](#available-scripts),
 + [.editorconfig][editorconfig] for consistent file format,
 + [Yarn][yarn] lockfile so only verified and up-to-date dependencies are installed.
-+ Guidance for CQRS architecture.
++ Automated Acceptance Testing with Cucumber
++ CloudFormation configuration
++ Docker container
++ Buildkite configuration
++ Command Dispatching with MotoTaxi
++ Guidance for CQRS architecture
 
 ## Global Install
 

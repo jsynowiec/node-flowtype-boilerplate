@@ -1,12 +1,11 @@
-
 const Joi = require('joi');
 
 export function register(server, options, next) {
   const dispatch = (cmd) => new Promise((resolve) => {
     server.app.dispatcher.dispatch(cmd)
-        .subscribe((response) => {
-          resolve(response);
-        });
+            .subscribe((response) => {
+              resolve(response);
+            });
   });
 
   server.route([{
@@ -41,8 +40,8 @@ export function register(server, options, next) {
       validate: {
         params: {
           id: Joi.number()
-                      .required()
-                      .description('the id for the encounter'),
+                        .required()
+                        .description('the id for the encounter'),
         },
       },
     },
@@ -73,8 +72,8 @@ export function register(server, options, next) {
       validate: {
         params: {
           id: Joi.number()
-                      .required()
-                      .description('the id for the encounter'),
+                        .required()
+                        .description('the id for the encounter'),
         },
       },
     },

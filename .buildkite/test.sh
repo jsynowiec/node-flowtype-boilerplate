@@ -4,7 +4,13 @@ set -eo pipefail
 echo "--- Copy Templates"
 cp -v src/config/loggly.js.sample src/config/loggly.js
 echo "--- Test"
+if [[ "$BUILDKITE_BRANCH" == "master"  ]]; then
+export NODE_ENV=prod
+fi
 npm install
+if [[ "$BUILDKITE_BRANCH" == "master"  ]]; then
+export NODE_ENV=production
+fi
 npm run build
 npm run test
 if [ $BUILDKITE_PULL_REQUEST = false ]; then

@@ -12,7 +12,7 @@ Parameters:
     Description: App Version.
     Type: String
     Default: "0.0.0"
-    AllowedPattern: '[0-9\.]+'
+    AllowedPattern: '[a-zA-Z0-9\-]+'
     ConstraintDescription: must specify an Application Version
   NeedPostgresDB:
     Description: Need A Postgress Database ? .

@@ -13,7 +13,5 @@ export NODE_ENV=production
 fi
 npm run build
 echo "--- Deploy to $BUILDKITE_BRANCH"
-pwd
-ls -a
 gulp deploy
 buildkite-agent artifact upload "zip/**/*.zip"

@@ -65,10 +65,18 @@ gulp.task('update-elastic-beanstalk', ['push-to-s3'], (done) => {
 });
 
 gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
-  console.log(__dirname)
   return cfn({
     name: appName+"-"+environment+"-stack",
     template: __dirname + '/template.yaml',
+    cfParams: { 
+      EnvType: environment,
+      AppVersion: version,
+      NeedPostgresDB: 'y',
+      ApplicationName: appName,
+      DBName: "gleedb",
+      DBuser: "acklen",
+      DBpassword: "acklenavenue"
+     },
     awsConfig: awsConfig
   }).then(function(data) {
     console.log('done')

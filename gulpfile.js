@@ -12,7 +12,7 @@ const version = process.env.APPVERSION || '0.0.1';
 
 let awsConfig = {
   accessKeyId: environment === 'production' ? process.env.AWS_ACCESS_KEY_ID_PROD : process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: environment === 'production' ? process.env.AWS_SA_KEY_PROD : process.env.AWS_SA_KEY,
+  secretAccessKey: environment === 'production' ? process.env.AWS_SECRET_ACCESS_KEY_PROD : process.env.AWS_SECRET_ACCESS_KEY,
   region: environment === 'production' ? process.env.AWS_REGION_PROD : process.env.AWS_REGION
 }
 

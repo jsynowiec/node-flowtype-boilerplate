@@ -24,3 +24,8 @@ services:
       - LOGGLY_SUBDOMAIN
       - LOGGLY_TOKEN_PROD
       - LOGGLY_SUBDOMAIN_PROD
+      - APPNAME_PROD
+      - APPNAME
+      - APPVERSION
+      - AWS_REGION_PROD
+      - AWS_REGION

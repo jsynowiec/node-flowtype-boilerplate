@@ -26,3 +26,4 @@ tmp/
 
 
 src/config/sequelize.js
+src/config/loggly.js

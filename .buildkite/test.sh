@@ -2,6 +2,7 @@
 
 set -eo pipefail
 echo "--- Test"
+cp src/config/loggly.js.sample src/config/loggly.js
 npm install
 npm run build
 npm run test

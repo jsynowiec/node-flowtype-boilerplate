@@ -70,12 +70,12 @@ gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
     name: appName+"-"+environment+"-stack",
     template: __dirname + '/template.yaml',
     awsConfig: awsConfig
-  }).then(function () {
-    console.log('done');
-  }).catch(
-   (reason) => {
-      throw new gutil.PluginError('cloudformation', reason);
-    });;
+  }).then(function(data) {
+    console.log('done')
+  },
+  function(error) {
+    throw new gutil.PluginError('cloudformation', error);
+  });
 });
 
 

@@ -65,13 +65,17 @@ gulp.task('update-elastic-beanstalk', ['push-to-s3'], (done) => {
 });
 
 gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
+  çonsole.log(__dirname)
   cfn({
     name: appName+"-"+environment+"-stack",
     template: __dirname + '/template.yaml',
     awsConfig: awsConfig
   }).then(function () {
     console.log('done');
-  });
+  }).catch(
+   (reason) => {
+      throw new gutil.PluginError('cloudformation', reason);
+    });;
 });
 
 

@@ -22,7 +22,7 @@ Parameters:
       - "no"
     Default: "no" 
   ApplicationName:
-    Description: Application  Name.
+    Description: Application Name.
     Type: String
     AllowedPattern: [A-Za-z0-9\-]+
     ConstraintDescription: must specify an Application Name

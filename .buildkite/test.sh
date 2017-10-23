@@ -1,8 +1,11 @@
 #!/bin/bash
 
 set -eo pipefail
+echo "--- Copy Templates"
+ls -a src/config
+cp -v src/config/loggly.js.sample src/config/loggly.js
+ls -a src/config
 echo "--- Test"
-cp src/config/loggly.js.sample src/config/loggly.js
 npm install
 npm run build
 npm run test

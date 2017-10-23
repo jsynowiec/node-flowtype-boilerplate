@@ -17,15 +17,14 @@ export default [{
       info: {
         title: `${Pack.name} API Documentation`,
         description: `${Pack.description}`,
-                    // Get the version from package.json
+        // Get the version from package.json
         version: Pack.version,
         contact: {
-          name: 'Byron Sommardahl',
+          name: 'Acklen Avenue',
           url: 'https://acklenavenue.com/',
         },
       },
-      documentationPath: '/docs/',
-
+      documentationPath: '/docs',
     },
   },
 },

@@ -3,7 +3,6 @@ steps:
     command: '/.buildkite/test.sh'
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: app
-    branches: 'develop staging'  
     agents:
       queue: 'elastic'
 

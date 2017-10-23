@@ -6,11 +6,18 @@ module.exports = {
     "host": process.env.PG_HOST,
     "dialect": "postgres"
   },
-  development: {
-    username: 'postgres',
-    password: 'password',
-    database: 'postgres',
-    host: 'localhost',
-    dialect: 'postgres',
+  "staging": {
+    "username": process.env.PG_USER,
+    "password": process.env.PG_PASSWORD,
+    "database": process.env.PG_DATABASE,
+    "host": process.env.PG_HOST,
+    "dialect": "postgres"
   },
+  "dev": {
+    "username": process.env.PG_USER,
+    "password": process.env.PG_PASSWORD,
+    "database": process.env.PG_DATABASE,
+    "host": process.env.PG_HOST,
+    "dialect": "postgres"
+  }
 };

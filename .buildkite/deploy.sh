@@ -3,6 +3,7 @@
 set -eo pipefail
 echo "--- Copy Templates"
 cp -v src/config/loggly.js.sample src/config/loggly.js
+cp -v src/config/sequelize.js.sample src/config/sequelize.js
 echo "--- Build"
 if [[ "$BUILDKITE_BRANCH" == "master"  ]]; then
 export NODE_ENV=prod

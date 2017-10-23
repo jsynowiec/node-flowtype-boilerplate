@@ -20,6 +20,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "~6.24.1",
     "babel-register": "^6.24.1",
+    "cfn": "^1.2.0",
     "chai": "^4.1.1",
     "cucumber": "^2.3.1",
     "eslint": "~3.19.0",
@@ -96,12 +97,20 @@
   "homepage": "https://github.com/acklenavenue/glee#readme",
   "jest": {
     "testEnvironment": "node",
-    "moduleFileExtensions": ["js"],
+    "moduleFileExtensions": [
+      "js"
+    ],
     "coverageDirectory": "coverage",
-    "collectCoverageFrom": ["src/domain/**/*.js", "!src/**/index.js"]
+    "collectCoverageFrom": [
+      "src/domain/**/*.js",
+      "!src/**/index.js"
+    ]
   },
   "lint-staged": {
-    "*.js": ["lint", "git add"]
+    "*.js": [
+      "lint",
+      "git add"
+    ]
   },
   "pre-commit": "lint:staged"
 }

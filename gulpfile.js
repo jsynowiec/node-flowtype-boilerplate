@@ -4,16 +4,19 @@ const clean = require('gulp-clean');
 const gutil = require('gulp-util');
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const cfn = require('cfn');
 
 const environment = process.env.ENVIRONMENT || 'dev';
-const appName = environment === 'production' ? process.env.appName_prod : process.env.appName || 'TEST';
-const version = process.env.version || '0.0.1';
+const appName = environment === 'production' ? process.env.APPNAME_PROD : process.env.APPNAME || 'TEST';
+const version = process.env.APPVERSION || '0.0.1';
 
-AWS.config.update({
+let awsConfig = {
   accessKeyId: environment === 'production' ? process.env.AWS_ACCESS_KEY_ID_PROD : process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: environment === 'production' ? process.env.AWS_SA_KEY_PROD : process.env.AWS_SA_KEY,
-  region: 'us-east-1',
-});
+  region: environment === 'production' ? process.env.AWS_REGION_PROD : process.env.AWS_REGION
+}
+
+AWS.config.update(awsConfig);
 
 gulp.task('zip-app', () => gulp.src(['./package.json', './dist/**/*.*', '.ebextensions/**/*.*'], {
   base: './',
@@ -23,7 +26,7 @@ gulp.task('clean', () => gulp.src(['dist/', 'zip/'], {
   read: false,
 }).pipe(clean()));
 
-gulp.task('push-to-s3', (done) => {
+gulp.task('push-to-s3',['zip-app'], (done) => {
   const s3 = new AWS.S3();
   s3.createBucket({
     Bucket: `${appName}-${environment}`,
@@ -60,3 +63,15 @@ gulp.task('update-elastic-beanstalk', ['push-to-s3'], (done) => {
     done();
   });
 });
+
+gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
+  cfn({
+    name: appName+"-"+environment+"-stack",
+    template: './template.yaml',
+    awsConfig: awsConfig
+  }).then(function () {
+    console.log('done');
+  });
+});
+
+

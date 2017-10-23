@@ -1,11 +1,26 @@
-version: "2"
-
+version: '2'
 services:
-  web:
+  app:
     build: .
-    command: nodemon --inspect=0.0.0.0:9229 ./dist/server.js
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
-      - "9229:9229"
+      - .:/usr/src/app
+      - /usr/bin/buildkite-agent:/usr/bin/buildkite-agent
+      - /usr/src/app/sonar-scanner-3.0.3.778-linux
+    environment:
+      - BUILDKITE_AGENT_ACCESS_TOKEN
+      - BUILDKITE_JOB_ID
+      - BUILDKITE_BUILD_ID
+      - BUILDKITE_BUILD_NUMBER
+      - BUILDKITE_PULL_REQUEST
+      - BUILDKITE_BRANCH
+      - GITHUB_ACCESS_TOKEN
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_ACCESS_KEY_ID_PROD
+      - AWS_SECRET_ACCESS_KEY_PROD
+      - ENVIRONMENT
+      - NODE_ENV
+      - LOGGLY_TOKEN
+      - LOGGLY_SUBDOMAIN
+      - LOGGLY_TOKEN_PROD
+      - LOGGLY_SUBDOMAIN_PROD

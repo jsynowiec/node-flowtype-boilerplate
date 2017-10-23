@@ -65,7 +65,7 @@ gulp.task('update-elastic-beanstalk', ['push-to-s3'], (done) => {
 });
 
 gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
-  çonsole.log(__dirname)
+  console.log(__dirname)
   cfn({
     name: appName+"-"+environment+"-stack",
     template: __dirname + '/template.yaml',

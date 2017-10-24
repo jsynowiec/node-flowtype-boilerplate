@@ -4,11 +4,12 @@ FROM node:8.2.1-slim
 WORKDIR /usr/src/app
 
 # Install app dependencies
+RUN npm install -g nodemon
 COPY package.json package-lock.json ./
 COPY src/config/loggly.js.sample src/config/loggly.js
 COPY src/config/sequelize.js.sample src/config/sequelize.js
 RUN npm install
-RUN npm build
+RUN npm run build
 
 # Bundle app source
 COPY . .

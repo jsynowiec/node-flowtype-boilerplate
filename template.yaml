@@ -326,6 +326,10 @@ Resources:
           Value: "8.4.0"
         -
           Namespace: "aws:elasticbeanstalk:environment"
+          OptionName: "ServiceRole"
+          Value: "aws-elasticbeanstalk-service-role"  
+        -
+          Namespace: "aws:elasticbeanstalk:environment"
           OptionName: "EnvironmentType"
           Value: "LoadBalanced"
         -

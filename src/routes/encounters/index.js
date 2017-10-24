@@ -13,7 +13,7 @@ export function register(server, options, next) {
     method: 'GET',
     path: '/encounters',
     config: {
-      auth: false,
+      auth: 'jwt',
       tags: ['api'],
       handler: (request, reply) => {
         reply(dispatch({ type: 'getAllEncounters', userId: request.auth.credentials.id }));
@@ -23,7 +23,7 @@ export function register(server, options, next) {
     method: 'GET',
     path: '/encounters/{id}',
     config: {
-      auth: false,
+      auth: 'jwt',
       tags: ['api'],
       handler: (request, reply) => {
         reply(dispatch({ type: 'getOneEncounter', id: request.params.id }));

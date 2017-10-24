@@ -317,7 +317,6 @@ Resources:
     Properties:
       ApplicationName: !Ref ApplicationName
       Description: !Ref ApplicationName
-      EnvironmentName: !Join [ "", [ !Ref ApplicationName,"-", !Ref EnvType ] ]
       SolutionStackName: "64bit Amazon Linux 2017.03 v4.3.0 running Node.js"
       OptionSettings:
         -

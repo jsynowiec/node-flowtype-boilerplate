@@ -1,10 +1,7 @@
 #!/bin/bash
 
 set -eo pipefail
-echo "--- Copy Templates"
-cp -v src/config/loggly.js.sample src/config/loggly.js
 echo "--- Test"
-npm run build
 npm run test
 if [ $BUILDKITE_PULL_REQUEST = false ]; then
     echo "--- Sonar Scanner: Scanning "$BUILDKITE_BRANCH" branch"

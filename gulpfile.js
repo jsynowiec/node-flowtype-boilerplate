@@ -75,7 +75,9 @@ gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
       ApplicationName: appName,
       DBName: "gleedb",
       DBuser: "acklen",
-      DBpassword: "acklenavenue"
+      DBpassword: "acklenavenue",
+      LOGGLY_TOKEN_PROD:process.env.LOGGLY_TOKEN_PROD,
+      LOGGLY_SUBDOMAIN_PROD:process.env.LOGGLY_SUBDOMAIN_PROD
      },
     awsConfig: awsConfig
   }).then(function(data) {

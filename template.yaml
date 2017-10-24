@@ -44,6 +44,12 @@ Parameters:
     Default: "acklenavenue"
     AllowedPattern: '[A-Za-z0-9]+'
     ConstraintDescription: must specify an Database Name
+  LOGGLY_TOKEN_PROD:
+    Description: Loggly Token.
+    Type: String
+  LOGGLY_SUBDOMAIN_PROD:
+    Description: Loggly Domain.
+    Type: String  
 Mappings:
   Environments:
     dev:
@@ -312,8 +318,12 @@ Resources:
       ApplicationName: !Ref ApplicationName
       Description: !Ref ApplicationName
       EnvironmentName: !Join [ "", [ !Ref ApplicationName,"-", !Ref EnvType ] ]
-      SolutionStackName: "64bit Amazon Linux 2017.03 v4.2.0 running Node.js"
+      SolutionStackName: "64bit Amazon Linux 2017.03 v4.3.0 running Node.js"
       OptionSettings:
+        -
+          Namespace: "aws:elasticbeanstalk:container:nodejs"
+          OptionName: "NodeVersion"
+          Value: "8.4.0"
         -
           Namespace: "aws:elasticbeanstalk:environment"
           OptionName: "EnvironmentType"
@@ -375,6 +385,10 @@ Resources:
           OptionName: "StreamLogs"
           Value: "true"
         -
+          Namespace: "aws:elasticbeanstalk:healthreporting:system"
+          OptionName: "SystemType"
+          Value: "enhanced"  
+        -
           Namespace: "aws:elasticbeanstalk:command"
           OptionName: "DeploymentPolicy"
           Value: !FindInMap [ Environments, !Ref EnvType, DeploymentPolicy ]
@@ -412,6 +426,14 @@ Resources:
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "NODE_ENV"
           Value: "production"
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "LOGGLY_TOKEN_PROD"
+          Value: !Ref LOGGLY_TOKEN_PROD
+        -
+          Namespace: "aws:elasticbeanstalk:application:environment"
+          OptionName: "LOGGLY_SUBDOMAIN_PROD"
+          Value: !Ref LOGGLY_SUBDOMAIN_PROD   
 
       VersionLabel: !Ref AppVersion
   DNSRecord:

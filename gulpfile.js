@@ -20,7 +20,7 @@ let awsConfig = {
 
 AWS.config.update(awsConfig);
 
-gulp.task('zip-app', () => gulp.src(['./package.json', './dist/**/*.*', '.ebextensions/**/*.*'], {
+gulp.task('zip-app', () => gulp.src(['./package.json','./package-lock.json','dockerfile', './dist/**/*.*', '.ebextensions/**/*.*'], {
   base: './',
 }).pipe(zip(`${appName}-${version}.zip`)).pipe(gulp.dest('./zip')));
 

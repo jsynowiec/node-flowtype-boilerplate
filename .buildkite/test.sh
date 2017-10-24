@@ -2,6 +2,7 @@
 
 set -eo pipefail
 echo "--- Test"
+ls -a src/config
 npm run test
 if [ $BUILDKITE_PULL_REQUEST = false ]; then
     echo "--- Sonar Scanner: Scanning "$BUILDKITE_BRANCH" branch"

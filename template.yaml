@@ -321,8 +321,16 @@ Resources:
       ApplicationName: !Ref ApplicationName
       Description: !Ref ApplicationName
       EnvironmentName: !Join [ "", [ !Ref ApplicationName,"-", !Ref EnvType ] ]
-      SolutionStackName: "64bit Amazon Linux 2017.03 v2.7.4 running Docker 17.03.2-ce"
+      SolutionStackName: "64bit Amazon Linux 2017.03 v4.3.0 running Node.js"
       OptionSettings:
+        -
+          Namespace: "aws:elasticbeanstalk:container:nodejs"
+          OptionName: "NodeVersion"
+          Value: "8.4.0"
+        -
+          Namespace: "aws:elasticbeanstalk:container:nodejs"
+          OptionName: "NodeCommand"
+          Value: "node ./dist/server.js"  
         -
           Namespace: "aws:elasticbeanstalk:environment"
           OptionName: "ServiceRole"

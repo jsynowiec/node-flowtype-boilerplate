@@ -79,9 +79,9 @@ Mappings:
     production:
       "InstanceType": "t2.micro"
       "RetentionInDays": "90"
-      "DeploymentPolicy": "Rolling"
-      "MinSize": "1"
-      "MaxSize": "2"
+      "DeploymentPolicy": "RollingWithAdditionalBatch"
+      "MinSize": "2"
+      "MaxSize": "4"
       "DBInstanceClass": "db.t2.micro"
       "HostedZoneName": "acklenavenueclient.com."
       "DNSRecordType" : "CNAME"

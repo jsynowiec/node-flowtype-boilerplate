@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/src/config
+      - /usr/src/app/dist 
+    ports:
+      - "8000:8000"
+      - "9229:9229"
+    depends_on:
+      - postgres
+    environment:
+      - PG_USER=todoapp
+      - PG_PASSWORD=todopass
+      - PG_DATABASE=todos
+      - PG_HOST=postgres 
+  postgres:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: todoapp
+      POSTGRES_DB: todos
+      POSTGRES_PASSWORD: todopass

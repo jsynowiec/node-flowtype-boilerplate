@@ -18,7 +18,6 @@ RUN npm install
 COPY src/config/loggly.js.sample /usr/code/src/config/loggly.js
 COPY src/config/sequelize.js.sample /usr/code/src/config/sequelize.js
 
-RUN ls -a src/config
 
 # Bundle app source
 COPY . .

@@ -12,6 +12,9 @@ RUN unzip sonar-scanner-cli-3.0.3.778-linux.zip
 ENV PATH="/usr/src/app/sonar-scanner-3.0.3.778-linux/bin:${PATH}"
 RUN sonar-scanner -h
 
+COPY package.json package-lock.json ./
+RUN npm install
+
 # Bundle app source
 COPY . .
 EXPOSE 3000

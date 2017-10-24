@@ -1,7 +1,7 @@
 FROM node:8.2.1-slim
 
 # Create app directory
-WORKDIR /usr/code
+WORKDIR /usr/src/app
 
 # Install app dependencies
 RUN apt-get update
@@ -9,15 +9,8 @@ RUN apt-get install unzip -y
 RUN npm install gulp -g
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip
 RUN unzip sonar-scanner-cli-3.0.3.778-linux.zip
-ENV PATH="/usr/code/sonar-scanner-3.0.3.778-linux/bin:${PATH}"
+ENV PATH="/usr/src/app/sonar-scanner-3.0.3.778-linux/bin:${PATH}"
 RUN sonar-scanner -h
-
-COPY package.json .
-RUN npm install
-
-COPY src/config/loggly.js.sample /usr/code/src/config/loggly.js
-COPY src/config/sequelize.js.sample /usr/code/src/config/sequelize.js
-
 
 # Bundle app source
 COPY . .

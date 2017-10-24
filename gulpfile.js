@@ -9,6 +9,8 @@ const cfn = require('cfn');
 const environment = process.env.ENVIRONMENT || 'dev';
 const appName = environment === 'production' ? process.env.APPNAME_PROD : process.env.APPNAME || 'TEST';
 const version = process.env.APPVERSION || '0.0.1';
+const LogglyToken =  environment === 'production' ? process.env.LOGGLY_TOKEN_PROD : process.env.LOGGLY_TOKEN;
+const LogglySubdomain = environment === 'production' ? process.env.LOGGLY_SUBDOMAIN_PROD : process.env.LOGGLY_SUBDOMAIN;  
 
 let awsConfig = {
   accessKeyId: environment === 'production' ? process.env.AWS_ACCESS_KEY_ID_PROD : process.env.AWS_ACCESS_KEY_ID,
@@ -76,8 +78,8 @@ gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
       DBName: "gleedb",
       DBuser: "acklen",
       DBpassword: "acklenavenue",
-      LOGGLY_TOKEN_PROD:process.env.LOGGLY_TOKEN_PROD,
-      LOGGLY_SUBDOMAIN_PROD:process.env.LOGGLY_SUBDOMAIN_PROD
+      LogglyToken: LogglyToken,
+      LogglySubdomain: LogglySubdomain
      },
     awsConfig: awsConfig
   }).then(function(data) {

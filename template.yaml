@@ -44,10 +44,10 @@ Parameters:
     Default: "acklenavenue"
     AllowedPattern: '[A-Za-z0-9]+'
     ConstraintDescription: must specify an Database Name
-  LOGGLY_TOKEN_PROD:
+  LogglyToken:
     Description: Loggly Token.
     Type: String
-  LOGGLY_SUBDOMAIN_PROD:
+  LogglySubdomain:
     Description: Loggly Domain.
     Type: String  
 Mappings:
@@ -429,11 +429,11 @@ Resources:
         -
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "LOGGLY_TOKEN_PROD"
-          Value: !Ref LOGGLY_TOKEN_PROD
+          Value: !Ref LogglyToken
         -
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "LOGGLY_SUBDOMAIN_PROD"
-          Value: !Ref LOGGLY_SUBDOMAIN_PROD   
+          Value: !Ref LogglySubdomain   
 
       VersionLabel: !Ref AppVersion
   DNSRecord:

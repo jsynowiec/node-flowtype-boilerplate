@@ -63,6 +63,7 @@ Mappings:
       "DNSRecordType" : "CNAME"
       "EC2KeyName" : "acklenavenue"
       "CidrBlock" : "10.0.6"
+      "SSLCertificateId" : "arn:aws:acm:us-east-1:487799950875:certificate/4afa96b5-d7c2-44bd-8598-ab927007b7a0"
     staging:
       "InstanceType": "t2.micro"
       "RetentionInDays": "90"
@@ -74,6 +75,7 @@ Mappings:
       "DNSRecordType" : "CNAME"
       "EC2KeyName" : "acklenavenue"
       "CidrBlock" : "10.0.7"
+      "SSLCertificateId" : "arn:aws:acm:us-east-1:487799950875:certificate/4afa96b5-d7c2-44bd-8598-ab927007b7a0"
     production:
       "InstanceType": "t2.micro"
       "RetentionInDays": "90"
@@ -85,6 +87,7 @@ Mappings:
       "DNSRecordType" : "CNAME"
       "EC2KeyName" : "acklenavenue"
       "CidrBlock" : "10.0.1"
+      "SSLCertificateId" : "arn:aws:acm:us-east-1:487799950875:certificate/4afa96b5-d7c2-44bd-8598-ab927007b7a0"
 Conditions:
   CreateDevResources: !Equals [ !Ref EnvType, dev ]
   CreateStagingResources: !Equals [ !Ref EnvType, staging ]
@@ -392,6 +395,34 @@ Resources:
           Namespace: "aws:autoscaling:launchconfiguration"
           OptionName: "EC2KeyName"
           Value: !FindInMap [ Environments, !Ref EnvType, EC2KeyName ]
+        -
+          Namespace: "aws:elb:listener:80"
+          OptionName: "ListenerProtocol"
+          Value: "HTTP"
+        -
+          Namespace: "aws:elb:listener:80"
+          OptionName: "InstancePort"
+          Value: "80"
+        -
+          Namespace: "aws:elb:listener:80"
+          OptionName: "ListenerEnabled"
+          Value: "true"  
+        -
+          Namespace: "aws:elb:listener:443"
+          OptionName: "ListenerProtocol"
+          Value: "HTTPS"
+        -
+          Namespace: "aws:elb:listener:443"
+          OptionName: "InstancePort"
+          Value: "80"
+        -
+          Namespace: "aws:elb:listener:443"
+          OptionName: "SSLCertificateId"
+          Value: !FindInMap [ Environments, !Ref EnvType, SSLCertificateId ]
+        -
+          Namespace: "aws:elb:listener:443"
+          OptionName: "ListenerEnabled"
+          Value: "true"         
         -
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "APP_VERSION"

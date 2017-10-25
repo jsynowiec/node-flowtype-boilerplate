@@ -10,7 +10,10 @@ const environment = process.env.ENVIRONMENT || 'dev';
 const appName = environment === 'production' ? process.env.APPNAME_PROD : process.env.APPNAME || 'TEST';
 const version = process.env.APPVERSION || '0.0.1';
 const LogglyToken =  environment === 'production' ? process.env.LOGGLY_TOKEN_PROD : process.env.LOGGLY_TOKEN;
-const LogglySubdomain = environment === 'production' ? process.env.LOGGLY_SUBDOMAIN_PROD : process.env.LOGGLY_SUBDOMAIN;  
+const LogglySubdomain = environment === 'production' ? process.env.LOGGLY_SUBDOMAIN_PROD : process.env.LOGGLY_SUBDOMAIN;
+const DBNAME = environment === 'production' ? process.env.DBNAME_PROD : process.env.DBNAME;
+const DBUSER = environment === 'production' ? process.env.DBUSER_PROD : process.env.DBUSER;
+const DBPASS = environment === 'production' ? process.env.DBPASS_PROD : process.env.DBPASS;  
 
 let awsConfig = {
   accessKeyId: environment === 'production' ? process.env.AWS_ACCESS_KEY_ID_PROD : process.env.AWS_ACCESS_KEY_ID,
@@ -75,9 +78,9 @@ gulp.task('deploy',['update-elastic-beanstalk'], (done) => {
       AppVersion: version,
       NeedPostgresDB: 'y',
       ApplicationName: appName,
-      DBName: "gleedb",
-      DBuser: "acklen",
-      DBpassword: "acklenavenue",
+      DBName: DBNAME,
+      DBuser: DBUSER,
+      DBpassword: DBPASS,
       LogglyToken: LogglyToken,
       LogglySubdomain: LogglySubdomain
      },

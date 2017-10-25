@@ -440,11 +440,11 @@ Resources:
         -
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "PG_PASSWORD"
-          Value: !If [CreatePostgressResources, "acklenavenue" , "NONE"]
+          Value: !If [CreatePostgressResources, !Ref DBpassword , "NONE"]
         -
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "PG_USER"
-          Value: !If [CreatePostgressResources, "acklen", "NONE"]
+          Value: !If [CreatePostgressResources, !Ref DBuser , "NONE"]
         -
           Namespace: "aws:elasticbeanstalk:application:environment"
           OptionName: "PG_PORT"

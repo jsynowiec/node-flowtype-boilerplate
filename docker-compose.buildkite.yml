@@ -36,3 +36,6 @@ services:
       - DBNAME
       - DBUSER
       - DBPASS
+      - DBNAME_PROD
+      - DBUSER_PROD
+      - DBPASS_PROD

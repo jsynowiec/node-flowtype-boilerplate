@@ -33,3 +33,6 @@ services:
       - APPVERSION
       - AWS_REGION_PROD
       - AWS_REGION
+      - DBNAME
+      - DBUSER
+      - DBPASS

@@ -1,6 +1,6 @@
 [![Dev dependencies][dependencies-badge]][dependencies]
 [![Node.js version][nodejs-badge]][nodejs]
-[![NPM version][npm-badge]][npm]
+[![Yarn][yarn-badge]][yarn]
 [![Build Status][travis-badge]][travis-ci]
 
 [![MIT License][license-badge]][LICENSE]
@@ -29,17 +29,17 @@ Provides a basic template, batteries included:
 
 ## Quick start
 
-This project requires [Node.js][nodejs] 6.9 (LTS) or later (but should work with any 6.2 or newer release) and [NPM][npm]. Make sure you have those installed. Then just type following commands:
+This project requires [Node.js][nodejs] v8.9 (LTS Carbon) or later and [Yarn][yarn]. Make sure you have those installed. Then just type following commands:
 
 ```
 git clone https://github.com/jsynowiec/node-flowtype-boilerplate
 cd node-flowtype-boilerplate
-npm install
+yarn
 ```
 
 ## Available scripts
 
-Run using `npm run <script>` comand.
+Run using `yarn run <script>` comand.
 
 + `clean` - remove coverage data, Jest cache and transpiled files,
 + `lint` - lint source files and tests,
@@ -63,14 +63,14 @@ If you have any questions regarding this project:
 As an alternative to Flow type checking, you can try my [Node.js TypeScript boilerplate][ts-boilerplate]. It's basically the same but with TypeScript and TSLint.
 
 ## License
-MIT License. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE) file.
+Released under MIT license. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE) file.
 
 [dependencies-badge]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate/dev-status.svg?style=flat-square
 [dependencies]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate?type=dev
-[nodejs-badge]: https://img.shields.io/badge/node->=%206.9.0-blue.svg?style=flat-square
-[nodejs]: https://nodejs.org/dist/latest-v6.x/docs/api/
-[npm-badge]: https://img.shields.io/badge/npm->=%203.10.8-blue.svg?style=flat-square
-[npm]: https://docs.npmjs.com/
+[nodejs-badge]: https://img.shields.io/badge/node->=%208.9-blue.svg?style=flat-square
+[nodejs]: https://nodejs.org/dist/latest-v8.x/docs/api/
+[yarn-badge]: https://img.shields.io/badge/yarn-blue.svg?style=flat-square
+[yarn]: https://yarnpkg.com
 [travis-badge]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate.svg?branch=master
 [travis-ci]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square

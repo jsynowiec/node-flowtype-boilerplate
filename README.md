@@ -65,19 +65,19 @@ As an alternative to Flow type checking, you can try my [Node.js TypeScript boil
 ## License
 Released under MIT license. See the [LICENSE](https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE) file.
 
-[dependencies-badge]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate/dev-status.svg?style=flat-square
+[dependencies-badge]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate/dev-status.svg
 [dependencies]: https://david-dm.org/jsynowiec/node-flowtype-boilerplate?type=dev
-[nodejs-badge]: https://img.shields.io/badge/node->=%208.9-blue.svg?style=flat-square
+[nodejs-badge]: https://img.shields.io/badge/node->=%208.9-blue.svg
 [nodejs]: https://nodejs.org/dist/latest-v8.x/docs/api/
-[yarn-badge]: https://img.shields.io/badge/yarn-blue.svg?style=flat-square
+[yarn-badge]: https://img.shields.io/badge/yarn->=%201.0-blue.svg
 [yarn]: https://yarnpkg.com
 [travis-badge]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate.svg?branch=master
 [travis-ci]: https://travis-ci.org/jsynowiec/node-flowtype-boilerplate
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: https://github.com/jsynowiec/node-flowtype-boilerplate/blob/master/LICENSE
-[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs]: http://makeapullrequest.com
-[donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
+[donate-badge]: https://img.shields.io/badge/$-support-green.svg
 [donate]: http://bit.ly/donate-js
 [github-watch-badge]: https://img.shields.io/github/watchers/jsynowiec/node-flowtype-boilerplate.svg?style=social
 [github-watch]: https://github.com/jsynowiec/node-flowtype-boilerplate/watchers

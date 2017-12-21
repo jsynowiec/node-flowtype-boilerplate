@@ -1,5 +1,5 @@
 steps:
-  - name: ':hammer::fire: Build'
+  - name: ':hammer::hammer: Build'
     command: '/.buildkite/build.sh'
     agents:
       queue: 'elastic'
@@ -24,3 +24,10 @@ steps:
     branches: 'develop staging master'
     agents:
       queue: 'elastic'
+
+  - wait
+
+  - name: ':hammer::fire: Build'
+    command: '/.buildkite/build.sh'
+    agents:
+      queue: 'elastic'    

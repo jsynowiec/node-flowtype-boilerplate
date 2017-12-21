@@ -1,5 +1,5 @@
 steps:
-  - name: ':hammer::hammer: Build'
+  - name: ':hammer: Build'
     command: '/.buildkite/build.sh'
     agents:
       queue: 'elastic'
@@ -27,7 +27,7 @@ steps:
 
   - wait
 
-  - name: ':hammer::fire: Build'
-    command: '/.buildkite/build.sh'
+  - name: ':fire: Prune'
+    command: '/.buildkite/prune.sh'
     agents:
       queue: 'elastic'    

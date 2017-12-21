@@ -4,15 +4,15 @@ steps:
     agents:
       queue: 'elastic'
 
-  #- wait 
+  - wait 
 
-  #- name: ':hammer::fire: Build and Test'
-  #  command: '/.buildkite/test.sh'
-  #  env:
-  #    BUILDKITE_DOCKER_COMPOSE_CONTAINER: app
-  #    BUILDKITE_DOCKER_COMPOSE_FILE: docker-compose.buildkite.yml
-  #  agents:
-  #    queue: 'elastic'
+  - name: ':hammer::fire: Build and Test'
+    command: '/.buildkite/test.sh'
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: app
+      BUILDKITE_DOCKER_COMPOSE_FILE: docker-compose.buildkite.yml
+    agents:
+      queue: 'elastic'
 
   - wait
 

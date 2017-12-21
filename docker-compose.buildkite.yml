@@ -1,10 +1,14 @@
 version: '2'
 services:
   app:
-    image: acklenavenue/backend-sonarqube:8.8.1
+    build:
+      context: .
+      dockerfile: Dockerfile-buildkite
     volumes:
       - .:/usr/src/app
       - /usr/bin/buildkite-agent:/usr/bin/buildkite-agent
+      - /usr/src/app/node_modules
+      - /usr/src/app/src/config
     environment:
       - BUILDKITE_AGENT_ACCESS_TOKEN
       - BUILDKITE_JOB_ID

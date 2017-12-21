@@ -2,5 +2,5 @@
 
 set -eo pipefail
 echo "--- Build"
-docker build -t glee:$APPVERSION -f dockerfile-deploy
+docker build -f dockerfile-deploy -t glee:$APPVERSION .
 docker images

@@ -1,5 +1,4 @@
 FROM node:8.2.1-slim
-ENV NODE_ENV production
 # Create app directory
 WORKDIR /usr/src/app
 

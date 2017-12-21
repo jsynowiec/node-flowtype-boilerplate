@@ -2,11 +2,9 @@ steps:
   - name: ':hammer: Build'
     command: '/.buildkite/build.sh'
     agents:
-      queue: 'elastic'
+      queue: 'elastic' 
 
-  - wait 
-
-  - name: ':hammer::fire: Build and Test'
+  - name: ':fire: Test'
     command: '/.buildkite/test.sh'
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: app

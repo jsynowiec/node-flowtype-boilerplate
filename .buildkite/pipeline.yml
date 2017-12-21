@@ -25,9 +25,9 @@ steps:
     agents:
       queue: 'elastic'
 
-  - wait
+  #- wait
 
-  - name: ':fire: Prune'
-    command: '/.buildkite/prune.sh'
-    agents:
-      queue: 'elastic'    
+  #- name: ':fire: Prune'
+  #  command: '/.buildkite/prune.sh'
+  #  agents:
+  #    queue: 'elastic'    

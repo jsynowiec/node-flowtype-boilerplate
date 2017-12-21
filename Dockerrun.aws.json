@@ -1,0 +1,13 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "487799950875.dkr.ecr.us-east-1.amazonaws.com/$APPNAME-$ENVIRONMENT:$APPVERSION",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": "8000"
+      }
+    ],
+    "Logging": "/var/log/nginx"
+  }

@@ -2,9 +2,11 @@ const gulp = require('gulp');
 const zip = require('gulp-zip');
 const clean = require('gulp-clean');
 const gutil = require('gulp-util');
+const replace = require('gulp-replace');
 const AWS = require('aws-sdk');
 const fs = require('fs');
 const cfn = require('cfn');
+
 
 const environment = process.env.ENVIRONMENT || 'dev';
 const appName = environment === 'production' ? process.env.APPNAME_PROD : process.env.APPNAME || 'TEST';
@@ -23,7 +25,15 @@ let awsConfig = {
 
 AWS.config.update(awsConfig);
 
-gulp.task('zip-app', () => gulp.src(['./package.json','./package-lock.json','Dockerfile', './dist/**/*.*', '.ebextensions/**/*.*'], {
+gulp.task('templates', function(){
+  gulp.src(['Dockerrun.aws.json'])
+    .pipe(replace('$APPNAME', appName))
+    .pipe(replace('$ENVIRONMENT', environment))
+    .pipe(replace('$APPVERSION', version))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('zip-app',['templates'], () => gulp.src(['Dockerrun.aws.json', '.ebextensions/**/*.*'], {
   base: './',
 }).pipe(zip(`${appName}-${version}.zip`)).pipe(gulp.dest('./zip')));
 

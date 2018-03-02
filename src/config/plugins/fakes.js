@@ -2,7 +2,7 @@ import { Lifetime } from 'awilix';
 
 require('dotenv').config();
 
-export function register(server, options, next) {
+const register = (server, options, next) => {
   if (process.env.FAKES) {
     server.app.container.loadModules([`${__dirname}/../../data/repositories/*.fake.js`], {
       formatName: (name) => {
@@ -15,6 +15,16 @@ export function register(server, options, next) {
     });
   }
   next();
-}
+};
 
-exports.register.attributes = { name: 'fakes', version: '1.0.0' };
+register.attributes = {
+  name: 'fakes',
+  version: '1.0.0',
+};
+
+export default [{
+  plugin: {
+    register,
+    dependencies: ['repository-registration'],
+  },
+}];

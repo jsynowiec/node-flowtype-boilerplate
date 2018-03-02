@@ -1,6 +1,6 @@
 const hapiAuthJwt = require('hapi-auth-jwt2');
 
-export function register(server, options, next) {
+const register = (server, options, next) => {
   const validate = (decoded, request, callback) => {
     // This validate function is meant to add any layers of security
     // we think are necessary. In most cases, no additional checks are
@@ -32,6 +32,12 @@ export function register(server, options, next) {
     server.auth.default('jwt');
     next();
   });
-}
+};
 
-exports.register.attributes = { name: 'auth', version: '1.0.0' };
+register.attributes = { name: 'auth', version: '1.0.0' };
+
+export default [{
+  plugin: {
+    register,
+  },
+}];

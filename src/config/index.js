@@ -11,7 +11,7 @@ const getArrayFromFiles = (path) =>
 
 const connections = getArrayFromFiles(`${__dirname}/connections`);
 
-const infrastructurePlugins = getArrayFromFiles(`${__dirname}/registrations`);
+const infrastructurePlugins = getArrayFromFiles(`${__dirname}/plugins`);
 const routePlugins = getDirectoriesInPath(`${__dirname}/../routes`).map((d) => ({ plugin: `./routes/${d}` }));
 const registrations = [].concat(infrastructurePlugins, routePlugins);
 

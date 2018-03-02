@@ -3,7 +3,7 @@
 import * as mototaxi from 'mototaxi';
 import { commandHandlers } from '../../domain';
 
-export function register(server, options, next) {
+const register = (server, options, next) => {
   const logger = {
     log: (message) => {
       console.log(`mototaxi: ${message}`);
@@ -25,6 +25,13 @@ export function register(server, options, next) {
   server.app.dispatcher = dispatcher;
 
   next();
-}
+};
 
-exports.register.attributes = { name: 'mototaxi', version: '1.0.0' };
+register.attributes = { name: 'mototaxi', version: '1.0.0' };
+
+export default [{
+  plugin: {
+    register,
+    dependencies: ['handler-registration', 'repository-registration'],
+  },
+}];

@@ -1,15 +1,19 @@
 import { Lifetime } from 'awilix';
 
+require('dotenv').config();
+
 export function register(server, options, next) {
-  server.app.container.loadModules([`${__dirname}/../../data/repositories/*.fake.js`], {
-    formatName: (name) => {
-      const fileName = name.replace('.fake', '');
-      return `${fileName.toLowerCase()}Repository`;
-    },
-    registrationOptions: {
-      lifetime: Lifetime.SINGLETON,
-    },
-  });
+  if (process.env.FAKES) {
+    server.app.container.loadModules([`${__dirname}/../../data/repositories/*.fake.js`], {
+      formatName: (name) => {
+        const fileName = name.replace('.fake', '');
+        return `${fileName.toLowerCase()}Repository`;
+      },
+      registrationOptions: {
+        lifetime: Lifetime.SINGLETON,
+      },
+    });
+  }
   next();
 }
 

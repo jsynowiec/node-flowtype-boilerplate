@@ -73,6 +73,23 @@ Run using either `npm run <script>` or `yarn run <script>` comand.
 + `build:watch` - interactive watch mode, compile sources on change.
 + `aat` - run automated acceptance tests
 
+## Fakes
+
+To enable fakes, add a file called `.env` to the project root folder and add `FAKES=true` to that file. This will enable fakes using the plugin at `/config/plugins/fakes.js`.
+
+To disable fakes, you can do one of the following:
+- Remove the `.env` file.
+- Remove `FAKES=true` from the `.env` file.
+- Change `FAKES=true` to `FAKES=false` in the `.env` file.
+- Delete `/config/plugins/fakes.js` (recommended for releases)
+
+Currently, glee is only configured to detect fakes for repositories. Your fakes should have the same name as the real repository but use extention `.fakes.js` instead of `.js`. For example:
+
+- /data/repositories/encounters.js
+- /data/repositories/encounters.fake.js
+
+Both will resolve to `encountersRepository` in dependency injection.
+
 ## Questions
 
 If you have any questions regarding this project:

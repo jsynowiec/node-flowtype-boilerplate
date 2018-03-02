@@ -24,6 +24,7 @@ tmp/
 # Sublime Text
 *.sublime-*
 
-
+# Files with secrets
 src/config/sequelize.js
 src/config/loggly.js
+.env

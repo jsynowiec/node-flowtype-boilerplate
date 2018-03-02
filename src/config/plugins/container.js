@@ -1,4 +1,4 @@
-/* eslint-disable no-console, no-param-reassign */
+/* eslint-disable no-param-reassign */
 import awilix, { Lifetime } from 'awilix';
 import db from '../../models';
 
@@ -17,10 +17,7 @@ export function register(server, options, next) {
   });
 
   container.loadModules([`${__dirname}/../../data/repositories/*.repository.js`], {
-    formatName: (name) => {
-      const fileName = name.replace('.repository', '');
-      return `${fileName.toLowerCase()}Repository`;
-    },
+    formatName: (name) => `${name.toLowerCase()}Repository`,
     registrationOptions: {
       lifetime: Lifetime.SINGLETON,
     },

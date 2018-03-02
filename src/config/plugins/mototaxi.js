@@ -1,7 +1,6 @@
 /* eslint-disable no-console, no-param-reassign */
 
 import * as mototaxi from 'mototaxi';
-import container from '../container';
 import { commandHandlers } from '../../domain';
 
 export function register(server, options, next) {
@@ -12,7 +11,7 @@ export function register(server, options, next) {
   };
 
   const resolve = (handlerType) => {
-    const resolved = container.resolve(`${handlerType.name}Handler`);
+    const resolved = server.app.container.resolve(`${handlerType.name}Handler`);
     return resolved;
   };
 

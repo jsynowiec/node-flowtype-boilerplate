@@ -2,26 +2,35 @@
   "name": "node-flowtype-boilerplate",
   "version": "0.0.0",
   "description": "Minimalistic boilerplate to quick-start Node.js development in ES6+ (stage-3) with Flowtype checking.",
+  "author": "Jakub Synowiec <github@jakubsynowiec.info> (https://jakubsynowiec.info)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jsynowiec/node-flowtype-boilerplate#readme",
   "engineStrict": true,
   "engines": {
     "node": ">=8.9"
   },
   "devDependencies": {
     "babel-cli": "~6.26.0",
-    "babel-core": "~6.26.0",
-    "babel-eslint": "~8.0.2",
-    "babel-jest": "~21.2.0",
-    "babel-plugin-transform-async-to-generator": "~6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "~6.26.0",
+    "babel-core": "~6.26.3",
+    "babel-eslint": "~8.2.3",
+    "babel-jest": "~22.4.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.26.2",
     "babel-plugin-transform-flow-strip-types": "~6.22.0",
     "babel-plugin-transform-runtime": "~6.23.0",
     "babel-preset-stage-3": "~6.24.1",
-    "eslint": "~4.10.0",
+    "eslint": "~4.19.1",
     "eslint-config-airbnb-base": "~12.1.0",
-    "eslint-plugin-flowtype": "~2.39.1",
-    "eslint-plugin-import": "~2.8.0",
-    "flow-bin": "~0.58.0",
-    "jest": "~21.2.1"
+    "eslint-plugin-flowtype": "~2.46.3",
+    "eslint-plugin-import": "~2.11.0",
+    "flow-bin": "~0.71.0",
+    "jest": "~22.4.3"
   },
   "scripts": {
     "clean": "rm -rf coverage dist tmp",
@@ -34,26 +43,6 @@
     "test:watch": "jest --watch",
     "build": "babel src/**/*.js -d dist",
     "build:watch": "babel --watch src/**/*.js -d dist"
-  },
-  "author": "Jakub Synowiec <github@jakubsynowiec.info> (https://jakubsynowiec.info)",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jsynowiec/node-flowtype-boilerplate/issues"
-  },
-  "homepage": "https://github.com/jsynowiec/node-flowtype-boilerplate#readme",
-  "jest": {
-    "testEnvironment": "node",
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "coverageDirectory": "coverage",
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ]
   },
   "dependencies": {
     "babel-runtime": "~6.26.0"

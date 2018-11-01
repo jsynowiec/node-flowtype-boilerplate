@@ -13,6 +13,12 @@
 
 # node-flowtype-boilerplate
 
+Notice: This boilerplate repository is outdated and no longer maintained. I do not use Flowtype anymore in my projects.
+
+Instead, I strongly recomend you to use TypeScript. You can try my [Node.js TypeScript boilerplate](https://github.com/jsynowiec/node-typescript-boilerplate) repository.
+
+---
+
 Minimalistic boilerplate to jump-start a [Node.js][nodejs] project in ES6 with [Flow][flowtype] type checking.
 
 Provides a basic template, batteries included:

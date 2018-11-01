@@ -15,7 +15,7 @@
 
 Notice: This boilerplate repository is outdated and no longer maintained. I do not use Flowtype anymore in my projects.
 
-Instead, I strongly recomend you to use TypeScript. You can try my [Node.js TypeScript boilerplate](https://github.com/jsynowiec/node-typescript-boilerplate) repository.
+Instead, I strongly recommend to use TypeScript. You can try my [Node.js TypeScript boilerplate](https://github.com/jsynowiec/node-typescript-boilerplate) repository.
 
 ---
 
